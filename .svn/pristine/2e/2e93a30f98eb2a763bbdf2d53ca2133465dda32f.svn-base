@@ -1,0 +1,78 @@
+/*Estilo Personalizado*/
+
+.portlet-msg-error {
+	font-style: italic;
+	font-weight: bold;
+	margin: 1px 0px 0px 0px;
+	padding: 1px 5px 1px 24px;
+}
+
+.portlet-msg-info {
+	font-style: italic;
+	margin: 1px 0px 0px 0px;
+	padding: 1px 5px 1px 24px;
+}
+
+/*Separadores*/
+.spacer10 {
+	height: 10px;
+}
+
+.spacer15 {
+	height: 15px;
+}
+
+.spacer20 {
+	height: 20px;
+}
+
+.spacer25 {
+	height: 25px;
+}
+
+/*Estilo Layout*/
+.headerTemplate {
+	
+}
+
+.footerTemplate {
+	
+}
+
+.tableStandard{
+	width: 100%
+}
+
+
+.column50 {
+	width: 50%;
+	text-align: center;
+}
+
+
+.column50 {
+	width: 50%;
+	text-align: center;
+}
+
+.sidebarTemplate {
+	float: left;
+	width: 25%;
+	margin-right: 5px;
+}
+
+.bodyTemplate {
+	float: right;
+	width: 74%;
+	margin-right: 1px;
+}
+
+.divContent {
+	overflow: hidden;
+}
+
+
+#bodyContent .ui-panelmenu .ui-panelmenu-header a{
+	font-size: 12px;
+}
+

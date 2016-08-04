@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+	<navigation-rule>
+		<from-view-id>/views/*</from-view-id>
+
+		<navigation-case>
+			<from-outcome>inicio</from-outcome>
+			<to-view-id>/views/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>distritos</from-outcome>
+			<to-view-id>/views/distritos/distritos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addDistritos</from-outcome>
+			<to-view-id>/views/distritos/add.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateDistritos</from-outcome>
+			<to-view-id>/views/distritos/update.xhtml</to-view-id>
+		</navigation-case>
+
+
+		<navigation-case>
+			<from-outcome>circuitos</from-outcome>
+			<to-view-id>/views/circuitos/circuitos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addCircuitos</from-outcome>
+			<to-view-id>/views/circuitos/add.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateCircuitos</from-outcome>
+			<to-view-id>/views/circuitos/update.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>municipios</from-outcome>
+			<to-view-id>/views/municipios/municipios.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addMunicipio</from-outcome>
+			<to-view-id>/views/municipios/add.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateMunicipio</from-outcome>
+			<to-view-id>/views/municipios/update.xhtml</to-view-id>
+		</navigation-case>
+
+
+		<navigation-case>
+			<from-outcome>entidades</from-outcome>
+			<to-view-id>/views/entidades/entidades.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addEntidad</from-outcome>
+			<to-view-id>/views/entidades/add.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateEntidad</from-outcome>
+			<to-view-id>/views/entidades/update.xhtml</to-view-id>
+		</navigation-case>
+
+
+		<navigation-case>
+			<from-outcome>especialidades</from-outcome>
+			<to-view-id>/views/especialidades/especialidades.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addEspecialidad</from-outcome>
+			<to-view-id>/views/especialidades/add.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateEspecialidad</from-outcome>
+			<to-view-id>/views/especialidades/update.xhtml</to-view-id>
+		</navigation-case>
+
+
+		<navigation-case>
+			<from-outcome>funcionarios</from-outcome>
+			<to-view-id>/views/funcionarios/funcionarios.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addFuncionario</from-outcome>
+			<to-view-id>/views/funcionarios/add.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateFuncionario</from-outcome>
+			<to-view-id>/views/funcionarios/update.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>consejos</from-outcome>
+			<to-view-id>/views/consejos/consejos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addConsejo</from-outcome>
+			<to-view-id>/views/consejos/add.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateConsejo</from-outcome>
+			<to-view-id>/views/consejos/update.xhtml</to-view-id>
+		</navigation-case>
+
+
+		<navigation-case>
+			<from-outcome>despachos</from-outcome>
+			<to-view-id>/views/despachos/despachos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addDespacho</from-outcome>
+			<to-view-id>/views/despachos/add.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateDespacho</from-outcome>
+			<to-view-id>/views/despachos/update.xhtml</to-view-id>
+		</navigation-case>
+		
+		
+		<navigation-case>
+			<from-outcome>relUsuario</from-outcome>
+			<to-view-id>/views/usuario/listado.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>addRelUsuario</from-outcome>
+			<to-view-id>/views/usuario/add.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>updateRelUsuario</from-outcome>
+			<to-view-id>/views/usuario/update.xhtml</to-view-id>
+		</navigation-case>
+
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/views/publico/*</from-view-id>
+
+		<!-- Vistas Publlico -->
+
+		<navigation-case>
+			<from-outcome>avanzada</from-outcome>
+			<to-view-id>/views/publico/consulta_avanzada/avanzada.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>basica</from-outcome>
+			<to-view-id>/views/publico/consulta_basica/basica.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+	</navigation-rule>
+
+	<lifecycle>
+		<phase-listener>com.liferay.faces.util.lifecycle.ViewScopePhaseListener</phase-listener>
+	</lifecycle>
+</faces-config>

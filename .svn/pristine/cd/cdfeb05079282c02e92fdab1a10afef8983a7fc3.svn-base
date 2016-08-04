@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:aui-cc="http://liferay.com/faces/aui-cc"
+	xmlns:p="http://primefaces.org/ui" template="/views/publico/layouts/template.xhtml">
+	<ui:define name="body">
+
+		<h:form id="formAvazada" prependId="false">
+
+			<p:panel header="#{i18n['label-title-portlet']}">
+
+				<p:messages id="messages"></p:messages>
+
+				<p:outputPanel id="panelFilds">
+					<h:panelGrid columns="2" styleClass="tableStandard">
+						<h:outputText value="#{i18n['label-MunicipioDepartamento']}" for="selectMunicipio" />
+						<p:selectOneMenu id="selectMunicipio" value="#{consultaAvanzadaBean.departamentoMunicipio}">
+							<f:selectItem itemLabel="Seleccione Municipio" />
+							<f:selectItems value="#{consultaAvanzadaBean.itemsMunicipios}" />
+							<p:ajax update="panelFilds,messages" listener="#{consultaAvanzadaBean.municipioChange()}" />
+						</p:selectOneMenu>
+
+						<h:outputText value="#{i18n['label-Distrito']}" for="selectDistrito" />
+						<p:selectOneMenu id="selectDistrito" value="#{consultaAvanzadaBean.idDistrito}">
+							<f:selectItem itemLabel="Seleccione Distritio" />
+							<f:selectItems value="#{consultaAvanzadaBean.itemsDistritos}" />
+							<p:ajax update="panelFilds,messages" listener="#{consultaAvanzadaBean.init()}" />
+						</p:selectOneMenu>
+
+						<h:outputText value="#{i18n['label-Entidad']}" for="selectEntidad" />
+						<p:selectOneMenu id="selectEntidad" value="#{consultaAvanzadaBean.idEntidad}">
+							<f:selectItem itemLabel="Seleccione Entidad" />
+							<f:selectItems value="#{consultaAvanzadaBean.itemsEntidad}" />
+							<p:ajax update="panelFilds,messages" listener="#{consultaAvanzadaBean.init()}" />
+						</p:selectOneMenu>
+
+						<h:outputText value="#{i18n['label-ConsejoSeccional']}" for="selectConsejo" />
+						<p:selectOneMenu id="selectConsejo" value="#{consultaAvanzadaBean.idConsejo}">
+							<f:selectItem itemLabel="Seleccione Consejo Seccional" />
+							<f:selectItems value="#{consultaAvanzadaBean.itemsConsejos}" />
+							<p:ajax update="panelFilds,messages" listener="#{consultaAvanzadaBean.init()}" />
+						</p:selectOneMenu>
+
+						<h:outputText value="#{i18n['label-Circuito']}" for="selectCircuito" />
+						<p:selectOneMenu id="selectCircuito" value="#{consultaAvanzadaBean.idCircuito}">
+							<f:selectItem itemLabel="Seleccione Circuito" />
+							<f:selectItems value="#{consultaAvanzadaBean.itemsCircuitos}" />
+							<p:ajax update="panelFilds,messages" listener="#{consultaAvanzadaBean.init()}" />
+						</p:selectOneMenu>
+
+						<h:outputText value="#{i18n['label-Especialidad']}" for="selectEspecialidad" />
+						<p:selectOneMenu id="selectEspecialidad" value="#{consultaAvanzadaBean.idEspecialidad}">
+							<f:selectItem itemLabel="Seleccione Especialidad" />
+							<f:selectItems value="#{consultaAvanzadaBean.itemsEspecialidad}" />
+							<p:ajax update="panelFilds,messages" listener="#{consultaAvanzadaBean.init()}" />
+						</p:selectOneMenu>
+
+					</h:panelGrid>
+				</p:outputPanel>
+				<div class="spacer25"></div>
+				<p:outputPanel>
+					<h:panelGrid columns="2" styleClass="tableStandard" columnClasses="column50,column50">
+						<p:commandButton value="#{i18n['btn-Buscar']}" action="#{consultaAvanzadaBean.cargaFiltrosDataModel()}" ajax="true"
+							update="formAvazada,messages" />
+						<p:commandButton value="#{i18n['btn-Limpiar']}" action="#{consultaAvanzadaBean.cleanForm()}" update="formAvazada" />
+					</h:panelGrid>
+				</p:outputPanel>
+				<div class="spacer25"></div>
+				<p:outputPanel id="panelResultados">
+					<p:dataTable id="tableDespachos" value="#{consultaAvanzadaBean.despachos}" var="despacho" rows="10" paginator="true" paginatorPosition="bottom"
+						lazy="true" rendered="#{consultaAvanzadaBean.despachos != null}" styleClass="tableStandard">
+						<f:facet name="header">  
+           					 Despachos
+        				</f:facet>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="#{i18n['table-despacho-No']}" />
+							</f:facet>
+							<h:outputText value="#{despacho.codigo}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="#{i18n['table-despacho-Nombre']}" />
+							</f:facet>
+							<h:outputText value="#{despacho.nombre}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="#{i18n['table-despacho-DepartamentoMunicipio']}" />
+							</f:facet>
+
+							<h:outputText value="#{despacho.municipio.nombre}" />
+							<h:outputText value=" - " />
+							<h:outputText value="#{despacho.departamento.nombre}" />
+
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="#{i18n['table-despacho-Circuito']}" />
+							</f:facet>
+							<h:outputText value="#{despacho.circuito.nombre}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="#{i18n['table-despacho-Distrito']}" />
+							</f:facet>
+							<h:outputText value="#{despacho.distrito.nombre}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="#{i18n['table-despacho-Direccion']}" />
+							</f:facet>
+							<h:outputText value="#{despacho.direccion}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="#{i18n['table-despacho-Telefonos']}" />
+							</f:facet>
+							<h:outputText value="#{despacho.telefonos}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="#{i18n['table-despacho-Funcionario']}" />
+							</f:facet>
+							<h:outputText value="#{despacho.trabajador.nombres} - " />
+							<h:outputText value="#{despacho.trabajador.apellidos}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="#{i18n['table-despacho-HA']}" />
+							</f:facet>
+							<h:outputText value="#{despacho.horario_atencion}" />
+						</p:column>
+
+					</p:dataTable>
+				</p:outputPanel>
+
+
+			</p:panel>
+
+			<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+
+			<p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false">
+				<p:graphicImage value="/images/ajaxloadingbar.gif" />
+			</p:dialog>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.EspecialidadFinder.findByEstadoDescpacho">
+	 <![CDATA[
+	 	select distinct {ESPECIALIDAD.*} from GLO_ESPECIALIDAD ESPECIALIDAD
+		join ADM_DESPACHOS DESPACHO on DESPACHO.DES_ESPECIALIDAD = ESPECIALIDAD.ESP_CODIGO 
+		join GLO_MUNICIPIOS MUNICIPIO on (MUNICIPIO.MUN_CODIGO = DESPACHO.DES_MUNICIPIO and MUNICIPIO.MUN_DEPARTAMENTO = DESPACHO.DES_DEPARTAMENTO )
+		join GLO_ENTIDADES ENTIDAD on ENTIDAD.ENT_CODIGO = DESPACHO.DES_ENTIDAD
+		where MUNICIPIO.MUN_CODIGO = ? and MUNICIPIO.MUN_DEPARTAMENTO = ? and ENTIDAD.ENT_CODIGO = ? and DESPACHO.DES_ESTADO = 1
+		Order by ESPECIALIDAD.ESP_NOMBRE asc
+	  ]]>
+	</sql>
+	
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.EspecialidadFinder.findByFields">
+	 <![CDATA[
+	 	SELECT {ESPECIALIDAD.*} FROM GLO_ESPECIALIDAD ESPECIALIDAD
+		WHERE  ESPECIALIDAD.ESP_CODIGO = ? AND ESPECIALIDAD.ESP_NOMBRE = ? AND 1=1
+		ORDER BY  ESPECIALIDAD.ESP_CODIGO
+	  ]]>
+	</sql>
+	
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.EspecialidadFinder.countByFields">
+	 <![CDATA[
+	 	SELECT COUNT(ESPECIALIDAD.ESP_CODIGO)AS COUNT_VALUE FROM GLO_ESPECIALIDAD ESPECIALIDAD
+		WHERE  ESPECIALIDAD.ESP_CODIGO = ? AND ESPECIALIDAD.ESP_NOMBRE = ? AND 1=1
+	  ]]>
+	</sql>
+
+</custom-sql>

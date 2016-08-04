@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_1_0.dtd">
+<service-builder package-path="la.netco.despachos_judiciales.entities">
+	<author>mariza</author>
+	<namespace>despachos_judiciales</namespace>
+
+	<entity name="Municipio" table="GLO_MUNICIPIOS" local-service="true" remote-service="false" json-enabled="false" data-source="csjDespachosDataSource">
+        <column name="idDepartamento" primary="true" db-name="MUN_DEPARTAMENTO" type="int" json-enabled="false" id-type="identity"></column>
+        <column primary="true" db-name="MUN_CODIGO" id-type="identity" type="int" json-enabled="false" name="codigo"></column>
+        <column name="nombre" db-name="MUN_NOMBRE" type="String" json-enabled="false"></column>
+        <column name="indicativo" type="int" db-name="MUN_INDICATIVO" json-enabled="false"></column>
+        <column name="idCircuito" db-name="MUN_CIRCUITO" type="int" json-enabled="false"></column>
+        <column db-name="MUN_CIRCUITO_ADM" type="int" json-enabled="false" name="idCircuitoAdministrativo"></column>
+        <column name="idConsejoSeccional" db-name="MUN_CONSEJO_SEC_DIS" type="int" json-enabled="false"></column>
+        <column name="idCircuitoDisciplinario" type="int" db-name="MUN_CIRCUITO_DIS" json-enabled="false"></column>
+    </entity>
+    
+     <entity data-source="csjDespachosDataSource" json-enabled="false" local-service="true" name="Despacho" table="ADM_DESPACHOS" remote-service="false">
+        <column name="codigo" db-name="DES_CODIGO" type="String" json-enabled="false" primary="true"></column>
+		<column name="idDepartamento" db-name="DES_DEPARTAMENTO" type="int" json-enabled="false"></column>
+		<column name="idMunicipio" db-name="DES_MUNICIPIO" json-enabled="false" type="int"></column>
+		<column name="idEntidad" db-name="DES_ENTIDAD" type="int" json-enabled="false"></column>
+		<column name="idEspecialidad" db-name="DES_ESPECIALIDAD" type="int" json-enabled="false"></column>
+		<column name="consecutivo" db-name="DES_CONSECUTIVO" type="String" json-enabled="false"></column>
+		<column name="nombre" db-name="DES_NOMBRE" type="String" json-enabled="false"></column>
+		<column name="direccion" db-name="DES_DIRECCION" type="String" json-enabled="false"></column>
+		<column name="telefonos" db-name="DES_TELEFONOS" type="String" json-enabled="false"></column>
+		<column name="correo_electronico" db-name="DES_CORREO_ELECTRONICO" type="String" json-enabled="false"></column>
+		<column name="acuerdo" db-name="DES_ACUERDO" type="String" json-enabled="false"></column>
+		<column name="estado" db-name="DES_ESTADO" type="long" json-enabled="false"></column>
+		<column name="fax" db-name="DES_FAX" type="String" json-enabled="false"></column>
+		<column name="horario_atencion" db-name="DES_HORARIO_ATENCION" type="String" json-enabled="false"></column>
+		<column name="fecha_act" db-name="DES_FECHA_ACT" type="Date" json-enabled="false"></column>
+    </entity>
+    
+    <entity data-source="csjDespachosDataSource" json-enabled="false" local-service="true" name="Trabajador" table="ADM_TRABAJADORES" remote-service="false">
+		<column name="cedula" db-name="TRA_CEDULA" type="String" json-enabled="false" primary="true"></column>
+		<column name="nombres" db-name="TRA_NOMBRES" type="String" json-enabled="false"></column>
+		<column name="apellidos" db-name="TRA_APELLIDOS" type="String" json-enabled="false"></column>
+		<column name="especialidad" db-name="TRA_ESPECIALIDAD" type="String" json-enabled="false"></column>
+		<column name="correo_electronico" db-name="TRA_CORREO_ELECTRONICO" type="String" json-enabled="false"></column>
+		<column name="telefonos_oficina" db-name="TRA_TELEFONOS_OFICINA" type="String" json-enabled="false"></column>
+		<column name="carrera" db-name="TRA_CARRERA" type="long" json-enabled="false"></column>
+		<column name="tipo_trabajador" db-name="TRA_TIPO_TRABAJADOR" type="long" json-enabled="false"></column>
+		<column name="tipo_contrato" db-name="TRA_TIPO_CONTRATO" type="long" json-enabled="false"></column>
+		<column name="sexo" db-name="TRA_SEXO" type="String" json-enabled="false"></column>
+		<column name="fecha_nacimiento" db-name="TRA_FECHA_NACIMIENTO" type="Date" json-enabled="false"></column>
+    </entity>
+    <entity data-source="csjDespachosDataSource" json-enabled="false" local-service="true" name="Circuito" remote-service="false" table="GLO_CIRCUITOS">
+        <column db-name="CIR_CODIGO" json-enabled="false" name="codigo" primary="true" type="int"></column>
+        <column db-name="CIR_NOMBRE" json-enabled="false" name="nombre" type="String"></column>
+        <column db-name="CIR_DISTRITO" json-enabled="false" name="idDistrito" type="int"></column>
+        <column db-name="CIR_JURISDICCION" json-enabled="false" name="jurisdiccion" type="String"></column>
+        <column db-name="CIR_CODIGO_DANE" json-enabled="false" name="codigo_dane" type="String"></column>
+    </entity>
+    
+    <entity name="ConsejoSeccional" local-service="true" remote-service="false" data-source="csjDespachosDataSource" table="GLO_CONSEJOS_SEC" json-enabled="false">
+    	<column name="codigo" db-name="CON_CODIGO" type="int" json-enabled="false" primary="true"></column>
+		<column name="nombre" db-name="CON_NOMBRE" type="String" json-enabled="false"></column>
+		<column name="direccion" db-name="CON_DIRECCION" type="String" json-enabled="false"></column>
+		<column name="telefonos" db-name="CON_TELEFONOS" type="String" json-enabled="false"></column>
+		<column name="correo_electronico" db-name="CON_CORREO_ELECTRONICO" type="String" json-enabled="false"></column>
+    </entity>
+    
+    <entity data-source="csjDespachosDataSource" local-service="true" name="Departamento" table="GLO_DEPARTAMENTOS" remote-service="false" json-enabled="false">
+    	<column name="codigo" db-name="DEP_CODIGO" type="int" json-enabled="false" primary="true"></column>
+		<column name="nombre" db-name="DEP_NOMBRE" type="String" json-enabled="false"></column>
+    </entity>
+    
+    <entity data-source="csjDespachosDataSource" local-service="true" name="Distrito" table="GLO_DISTRITOS" remote-service="false" json-enabled="false">
+    	<column name="codigo" db-name="DIS_CODIGO" type="int" json-enabled="false" primary="true"></column>
+		<column name="nombre" db-name="DIS_NOMBRE" type="String" json-enabled="false"></column>
+		<column name="idConsejo_sec" db-name="DIS_CONSEJO_SEC" type="int" json-enabled="false"></column>
+		<column name="jurisdiccion" db-name="DIS_JURISDICCION" type="String" json-enabled="false"></column>
+		<column name="codigo_dane" db-name="DIS_CODIGO_DANE" type="String" json-enabled="false"></column>
+    </entity>
+    
+    <entity data-source="csjDespachosDataSource" local-service="true" name="Entidad" table="GLO_ENTIDADES" json-enabled="false" remote-service="false">
+    	<column name="codigo" db-name="ENT_CODIGO" type="int" json-enabled="false" primary="true"></column>
+		<column name="nombre" db-name="ENT_NOMBRE" type="String" json-enabled="false"></column>
+		<column name="mascara" db-name="ENT_MASCARA" type="String" json-enabled="false"></column>
+		<column name="jurisdiccion" db-name="ENT_JURISDICCION" type="String" json-enabled="false"></column>
+    </entity>
+    
+    <entity name="Especialidad" local-service="true" data-source="csjDespachosDataSource" table="GLO_ESPECIALIDAD" remote-service="false" json-enabled="false">
+    	<column name="codigo" db-name="ESP_CODIGO" type="int" json-enabled="false" primary="true"></column>
+		<column name="nombre" db-name="ESP_NOMBRE" type="String" json-enabled="false"></column>
+    </entity>
+    
+    
+    <entity name="RelacionTrabajadorDespacho" local-service="true" data-source="csjDespachosDataSource" table="REL_TRA_DES" remote-service="false" json-enabled="false">
+	    <column name="idDespacho" db-name="TDE_DESPACHO" type="String" json-enabled="false" primary="true"></column>
+		<column name="idTrabajador" db-name="TDE_TRABAJADOR" type="String" json-enabled="false" primary="true"></column>
+		<column name="cargo" db-name="TDE_CARGO" type="String" json-enabled="false"></column>
+		<column name="acuerdo" db-name="TDE_ACUERDO" type="String" json-enabled="false"></column>
+		<column name="activo" db-name="TDE_ACTIVO" type="String" json-enabled="false"></column>
+		<column name="fecha_ini" db-name="TDE_FECHA_INI" type="String" json-enabled="false"></column>
+		<column name="fecha_fin" db-name="TDE_FECHA_FIN" type="String" json-enabled="false"></column>
+		<column name="secuencia" db-name="TDE_SECUENCIA" type="String" json-enabled="false"></column>
+    </entity>
+    <entity name="RelacionUsuarioConsejo" table="REL_USUARIO_CONSEJOS_SEC" json-enabled="false" data-source="csjDespachosDataSource" local-service="true" remote-service="false">
+        <column name="idConsejoSec" type="int" db-name="UCS_CONSEJO_SEC" json-enabled="false" primary="true"></column>
+        <column name="usuarioPortal" json-enabled="false" type="String" db-name="UCS_USUARIO_PORTAL"></column>
+    </entity>
+
+</service-builder>

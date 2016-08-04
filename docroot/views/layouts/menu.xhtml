@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{adminMenu.preRenderMenu()}" />
+	</f:metadata>
+
+	<h:form id="menuForm">
+
+		<p:menubar id="allMenu" autoDisplay="false"  rendered="#{adminMenu.allMenu}">
+
+			<p:submenu label="#{i18n['menu-label-Distritos']}">
+				<p:menuitem value="#{i18n['menu-label-Agregar']} #{i18n['menu-label-Distritos']}" action="addDistritos" ajax="false" />
+				<p:menuitem value="#{i18n['menu-label-Consultar']} #{i18n['menu-label-Distritos']}" action="distritos" ajax="false" />
+			</p:submenu>
+
+			<p:submenu label="#{i18n['menu-label-Circuitos']}">
+				<p:menuitem value="#{i18n['menu-label-Agregar']} #{i18n['menu-label-Circuitos']}" action="addCircuitos" ajax="false" />
+				<p:menuitem value="#{i18n['menu-label-Consultar']} #{i18n['menu-label-Circuitos']}" action="circuitos" ajax="false" />
+			</p:submenu>
+
+			<p:submenu label="#{i18n['menu-label-Municipios']}">
+				<p:menuitem value="#{i18n['menu-label-Agregar']} #{i18n['menu-label-Municipios']}" action="addMunicipio" ajax="false" />
+				<p:menuitem value="#{i18n['menu-label-Consultar']} #{i18n['menu-label-Municipios']}" action="municipios" ajax="false" />
+			</p:submenu>
+
+			<p:submenu label="#{i18n['menu-label-Entidades']}">
+				<p:menuitem value="#{i18n['menu-label-Agregar']} #{i18n['menu-label-Entidades']}" action="addEntidad" ajax="false" />
+				<p:menuitem value="#{i18n['menu-label-Consultar']} #{i18n['menu-label-Entidades']}" action="entidades" ajax="false" />
+			</p:submenu>
+
+			<p:submenu label="#{i18n['menu-label-Especialidades']}">
+				<p:menuitem value="#{i18n['menu-label-Agregar']} #{i18n['menu-label-Especialidades']}" action="addEspecialidad" ajax="false" />
+				<p:menuitem value="#{i18n['menu-label-Consultar']} #{i18n['menu-label-Especialidades']}" action="especialidades" ajax="false" />
+			</p:submenu>
+
+			<p:submenu label="#{i18n['menu-label-Funcionarios']}">
+				<p:menuitem value="#{i18n['menu-label-Agregar']} #{i18n['menu-label-Funcionarios']}" action="addFuncionario" ajax="false" />
+				<p:menuitem value="#{i18n['menu-label-Consultar']} #{i18n['menu-label-Funcionarios']}" action="funcionarios" ajax="false" />
+			</p:submenu>
+
+			<p:submenu label="#{i18n['menu-label-ConsejosSeccionales']}">
+				<p:menuitem value="#{i18n['menu-label-Agregar']} #{i18n['menu-label-ConsejosSeccionales']}" action="addConsejo" ajax="false" />
+				<p:menuitem value="#{i18n['menu-label-Consultar']} #{i18n['menu-label-ConsejosSeccionales']}" action="consejos" ajax="false" />
+			</p:submenu>
+
+			<p:submenu label="#{i18n['menu-label-Despachos']}"> 
+				<p:menuitem value="#{i18n['menu-label-Agregar']} #{i18n['menu-label-Despachos']}" action="addDespacho" ajax="false" />
+				<p:menuitem value="#{i18n['menu-label-Consultar']} #{i18n['menu-label-Despachos']}" action="despachos" ajax="false" />
+			</p:submenu>
+			
+			<p:submenu label="#{i18n['menu-label-RelUsuarioConsejo']}">
+				<p:menuitem value="#{i18n['menu-label-Agregar']} #{i18n['menu-label-RelUsuarioConsejo']}" action="addRelUsuario" ajax="false" />
+				<p:menuitem value="#{i18n['menu-label-Consultar']} #{i18n['menu-label-RelUsuarioConsejo']}" action="relUsuario" ajax="false" />
+			</p:submenu>
+
+		</p:menubar>
+		
+		<p:menubar id="funcionarioMenu" autoDisplay="false"  rendered="#{adminMenu.userMenu}">
+			
+			<p:submenu label="#{i18n['menu-label-Funcionarios']}">
+				<p:menuitem value="#{i18n['menu-label-Agregar']} #{i18n['menu-label-Funcionarios']}" action="addFuncionario" ajax="false" />
+				<p:menuitem value="#{i18n['menu-label-Consultar']} #{i18n['menu-label-Funcionarios']}" action="funcionarios" ajax="false" />
+			</p:submenu>
+			
+			<p:submenu label="#{i18n['menu-label-Despachos']}">
+				<p:menuitem value="#{i18n['menu-label-Consultar']} #{i18n['menu-label-Despachos']}" action="despachos" ajax="false" />
+			</p:submenu>
+
+		</p:menubar>
+		
+
+	</h:form>
+
+</ui:composition>

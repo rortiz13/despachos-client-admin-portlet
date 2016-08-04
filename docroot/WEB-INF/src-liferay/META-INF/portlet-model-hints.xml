@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="la.netco.despachos_judiciales.entities.model.Circuito">
+		<field name="codigo" type="int" />
+		<field name="nombre" type="String" />
+		<field name="idDistrito" type="int" />
+		<field name="jurisdiccion" type="String" />
+		<field name="codigo_dane" type="String" />
+	</model>
+	<model name="la.netco.despachos_judiciales.entities.model.ConsejoSeccional">
+		<field name="codigo" type="int" />
+		<field name="nombre" type="String" />
+		<field name="direccion" type="String" />
+		<field name="telefonos" type="String" />
+		<field name="correo_electronico" type="String" />
+	</model>
+	<model name="la.netco.despachos_judiciales.entities.model.Departamento">
+		<field name="codigo" type="int" />
+		<field name="nombre" type="String" />
+	</model>
+	<model name="la.netco.despachos_judiciales.entities.model.Despacho">
+		<field name="codigo" type="String" />
+		<field name="idDepartamento" type="int" />
+		<field name="idMunicipio" type="int" />
+		<field name="idEntidad" type="int" />
+		<field name="idEspecialidad" type="int" />
+		<field name="consecutivo" type="String" />
+		<field name="nombre" type="String" />
+		<field name="direccion" type="String" />
+		<field name="telefonos" type="String" />
+		<field name="correo_electronico" type="String" />
+		<field name="acuerdo" type="String" />
+		<field name="estado" type="long" />
+		<field name="fax" type="String" />
+		<field name="horario_atencion" type="String" />
+		<field name="fecha_act" type="Date" />
+	</model>
+	<model name="la.netco.despachos_judiciales.entities.model.Distrito">
+		<field name="codigo" type="int" />
+		<field name="nombre" type="String" />
+		<field name="idConsejo_sec" type="int" />
+		<field name="jurisdiccion" type="String" />
+		<field name="codigo_dane" type="String" />
+	</model>
+	<model name="la.netco.despachos_judiciales.entities.model.Entidad">
+		<field name="codigo" type="int" />
+		<field name="nombre" type="String" />
+		<field name="mascara" type="String" />
+		<field name="jurisdiccion" type="String" />
+	</model>
+	<model name="la.netco.despachos_judiciales.entities.model.Especialidad">
+		<field name="codigo" type="int" />
+		<field name="nombre" type="String" />
+	</model>
+	<model name="la.netco.despachos_judiciales.entities.model.Municipio">
+		<field name="idDepartamento" type="int" />
+		<field name="codigo" type="int" />
+		<field name="nombre" type="String" />
+		<field name="indicativo" type="int" />
+		<field name="idCircuito" type="int" />
+		<field name="idCircuitoAdministrativo" type="int" />
+		<field name="idConsejoSeccional" type="int" />
+		<field name="idCircuitoDisciplinario" type="int" />
+	</model>
+	<model name="la.netco.despachos_judiciales.entities.model.RelacionTrabajadorDespacho">
+		<field name="idDespacho" type="String" />
+		<field name="idTrabajador" type="String" />
+		<field name="cargo" type="String" />
+		<field name="acuerdo" type="String" />
+		<field name="activo" type="String" />
+		<field name="fecha_ini" type="String" />
+		<field name="fecha_fin" type="String" />
+		<field name="secuencia" type="String" />
+	</model>
+	<model name="la.netco.despachos_judiciales.entities.model.RelacionUsuarioConsejo">
+		<field name="idConsejoSec" type="int" />
+		<field name="usuarioPortal" type="String" />
+	</model>
+	<model name="la.netco.despachos_judiciales.entities.model.Trabajador">
+		<field name="cedula" type="String" />
+		<field name="nombres" type="String" />
+		<field name="apellidos" type="String" />
+		<field name="especialidad" type="String" />
+		<field name="correo_electronico" type="String" />
+		<field name="telefonos_oficina" type="String" />
+		<field name="carrera" type="long" />
+		<field name="tipo_trabajador" type="long" />
+		<field name="tipo_contrato" type="long" />
+		<field name="sexo" type="String" />
+		<field name="fecha_nacimiento" type="Date" />
+	</model>
+</model-hints>

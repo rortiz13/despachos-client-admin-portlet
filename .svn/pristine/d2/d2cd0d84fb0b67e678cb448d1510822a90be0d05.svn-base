@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.EntidadFinder.findByEstadoDescpacho">
+	 <![CDATA[
+	 	select distinct {ENTIDAD.*} from GLO_ENTIDADES ENTIDAD 
+		join ADM_DESPACHOS DESPACHO on DESPACHO.DES_ENTIDAD = ENTIDAD.ENT_CODIGO  
+		join GLO_MUNICIPIOS MUNICIPIO on (MUNICIPIO.MUN_CODIGO = DESPACHO.DES_MUNICIPIO and MUNICIPIO.MUN_DEPARTAMENTO = DESPACHO.DES_DEPARTAMENTO )
+		where MUNICIPIO.MUN_CODIGO = ? and MUNICIPIO.MUN_DEPARTAMENTO = ? and DESPACHO.DES_ESTADO = 1
+		order by ENTIDAD.ENT_NOMBRE asc
+	  ]]>
+	</sql>
+
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.EntidadFinder.findByFields">
+	 <![CDATA[
+	 	SELECT {ENTIDAD.*} FROM GLO_ENTIDADES ENTIDAD
+		WHERE  ENTIDAD.ENT_CODIGO = ? AND ENTIDAD.ENT_NOMBRE = ? AND ENTIDAD.ENT_MASCARA = ? AND ENTIDAD.ENT_JURISDICCION = ? AND 1=1
+		ORDER BY ENTIDAD.ENT_CODIGO
+	 ]]>
+	</sql>
+	
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.EntidadFinder.countByFields">
+	 <![CDATA[
+	 	SELECT COUNT(ENTIDAD.ENT_CODIGO) AS COUNT_VALUE FROM GLO_ENTIDADES ENTIDAD
+		WHERE ENTIDAD.ENT_CODIGO = ? AND ENTIDAD.ENT_NOMBRE = ? AND ENTIDAD.ENT_MASCARA = ? AND ENTIDAD.ENT_JURISDICCION = ? AND 1=1
+	 ]]>
+	</sql>
+	
+</custom-sql>

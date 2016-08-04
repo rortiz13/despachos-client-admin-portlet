@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jstl/core" xmlns:aui-cc="http://liferay.com/faces/aui-cc"
+	xmlns:p="http://primefaces.org/ui" template="/views/layouts/template.xhtml">
+
+	<ui:define name="body">
+		<p:panel header="#{i18n['label-title-Distritos']}">
+
+			<f:metadata>
+				<f:event type="preRenderView" listener="#{adminConsejoBean.preRenderViewAdd()}" />
+			</f:metadata>
+
+			<h:form id="addForm" prependId="false">
+
+				<p:menubar id="Navegacion">
+					<p:menuitem value="#{i18n['menu-label-Agregar']}" action="addConsejo" icon="ui-icon-plusthick" ajax="false" />
+					<p:menuitem value="#{i18n['menu-label-Listado']}" action="consejos" icon="ui-icon-note" ajax="false" />
+				</p:menubar>
+
+				<div class="spacer25"></div>
+
+				<p:messages id="messages" autoUpdate="true" closable="true" />
+
+				<div class="spacer25"></div>
+
+				<h:panelGrid id="consejoFields" styleClass="tableStandard" columns="2" columnClasses="column30,column80">
+
+					<p:outputLabel value="#{i18n['label-consejo-Codigo']}" for="txtCodigo" />
+					<p:inputText id="txtCodigo" value="#{adminConsejoBean.consejoSelected.codigo}" />
+
+					<p:outputLabel value="#{i18n['label-consejo-Nombre']}" for="txtNombre" />
+					<p:inputText id="txtNombre" value="#{adminConsejoBean.consejoSelected.nombre}" />
+					
+					<p:outputLabel value="#{i18n['label-consejo-Direccion']}" for="txtDireccion" />
+					<p:inputText id="txtDireccion" value="#{adminConsejoBean.consejoSelected.direccion}" />
+					
+					<p:outputLabel value="#{i18n['label-consejo-Telefonos']}" for="txtTelefonos" />
+					<p:inputText id="txtTelefonos" value="#{adminConsejoBean.consejoSelected.telefonos}" />
+					
+					<p:outputLabel value="#{i18n['label-consejo-Correo']}" for="txtCorreo" />
+					<p:inputText id="txtCorreo" value="#{adminConsejoBean.consejoSelected.correo_electronico}" />
+
+
+				</h:panelGrid>
+
+
+				<div class="spacer25"></div>
+
+				<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+					<p:commandButton value="#{i18n['button-Guardar']}" action="#{adminConsejoBean.addObject()}" ajax="false" icon="ui-icon-disk" />
+				</h:panelGrid>
+
+				<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+
+				<p:dialog modal="true" widgetVar="statusDialog" header="Procesando..." draggable="false" closable="false">
+					<p:graphicImage value="/images/ajaxloadingbar.gif" />
+				</p:dialog>
+
+
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

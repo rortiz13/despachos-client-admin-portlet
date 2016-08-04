@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+
+
+	<sql
+		id="la.netco.despachos_judiciales.entities.service.persistence.RelacionTrabajadorDespachoFinder.findByFields">
+	 <![CDATA[
+		SELECT {RELACION_TRA_DES.*} FROM REL_TRA_DES RELACION_TRA_DES
+		WHERE RELACION_TRA_DES.TDE_DESPACHO = ? AND RELACION_TRA_DES.TDE_TRABAJADOR = ? AND RELACION_TRA_DES.TDE_CARGO = ? AND RELACION_TRA_DES.TDE_ACUERDO = ? AND RELACION_TRA_DES.TDE_ACTIVO = ? AND RELACION_TRA_DES.TDE_FECHA_INI = ? AND RELACION_TRA_DES.TDE_FECHA_FIN = ? AND RELACION_TRA_DES.TDE_SECUENCIA = ? AND 1=1
+		ORDER BY  RELACION_TRA_DES.TDE_DESPACHO, RELACION_TRA_DES.TDE_TRABAJADOR
+	  ]]>
+	</sql>
+
+	<sql
+		id="la.netco.despachos_judiciales.entities.service.persistence.RelacionTrabajadorDespachoFinder.countByFields">
+	 <![CDATA[
+		SELECT COUNT(RELACION_TRA_DES.TDE_DESPACHO) AS COUNT_VALUE FROM REL_TRA_DES RELACION_TRA_DES
+		WHERE RELACION_TRA_DES.TDE_DESPACHO = ? AND RELACION_TRA_DES.TDE_TRABAJADOR = ? AND RELACION_TRA_DES.TDE_CARGO = ? AND RELACION_TRA_DES.TDE_ACUERDO = ? AND RELACION_TRA_DES.TDE_ACTIVO = ? AND RELACION_TRA_DES.TDE_FECHA_INI = ? AND RELACION_TRA_DES.TDE_FECHA_FIN = ? AND RELACION_TRA_DES.TDE_SECUENCIA = ? AND 1=1
+	  ]]>
+	</sql>
+	
+	<sql
+		id="la.netco.despachos_judiciales.entities.service.persistence.RelacionTrabajadorDespachoFinder.uniqueResult">
+	 <![CDATA[
+		SELECT {RELACION_TRA_DES.*} FROM REL_TRA_DES RELACION_TRA_DES WHERE rownum <= 1
+	  ]]>
+	</sql>
+
+
+</custom-sql>

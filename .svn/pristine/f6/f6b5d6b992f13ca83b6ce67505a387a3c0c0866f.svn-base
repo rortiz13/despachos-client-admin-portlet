@@ -1,0 +1,74 @@
+/*Estilo Personalizado*/
+.portlet-msg-error {
+  font-style: italic;
+  font-weight: bold;
+  margin: 1px 0px 0px 0px;
+  padding: 1px 5px 1px 24px; }
+
+.portlet-msg-info {
+  font-style: italic;
+  margin: 1px 0px 0px 0px;
+  padding: 1px 5px 1px 24px; }
+
+/*Separadores*/
+.spacer10 {
+  height: 10px; }
+
+.spacer15 {
+  height: 15px; }
+
+.spacer20 {
+  height: 20px; }
+
+.spacer25 {
+  height: 25px; }
+
+/*Estilo Layout*/
+.sidebarTemplate {
+  float: left;
+  width: 100%; }
+
+.bodyTemplate {
+  float: right;
+  width: 100%;
+  background-color: #eef0f2; }
+
+.divContent {
+  overflow: hidden;
+  background-color: #eef0f2; }
+
+#bodyContent .ui-panelmenu .ui-panelmenu-header a {
+  font-size: 12px; }
+
+#bodyContent .ui-datatable table {
+  font-size: 12px; }
+
+.labelsDespacho {
+  background-color: #c4c4c4;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-right: 8px;
+  margin-right: 5px; }
+
+.columnDespacho {
+  height: 30px; }
+
+/**/
+.tableStandard {
+  width: 100%; }
+
+.centerContent {
+  text-align: center; }
+
+.column30 {
+  width: 30%; }
+
+.column50 {
+  width: 50%; }
+
+.column70 {
+  width: 70%; }
+
+.column80 {
+  width: 80%; }
+

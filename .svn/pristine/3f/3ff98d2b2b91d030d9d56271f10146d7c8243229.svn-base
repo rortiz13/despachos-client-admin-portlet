@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="la.netco.despachos_judiciales.entities.service.CircuitoLocalService" class="la.netco.despachos_judiciales.entities.service.impl.CircuitoLocalServiceImpl" />
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.CircuitoPersistence" class="la.netco.despachos_judiciales.entities.service.persistence.CircuitoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.CircuitoFinder" class="la.netco.despachos_judiciales.entities.service.persistence.CircuitoFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.ConsejoSeccionalLocalService" class="la.netco.despachos_judiciales.entities.service.impl.ConsejoSeccionalLocalServiceImpl" />
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.ConsejoSeccionalPersistence" class="la.netco.despachos_judiciales.entities.service.persistence.ConsejoSeccionalPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.ConsejoSeccionalFinder" class="la.netco.despachos_judiciales.entities.service.persistence.ConsejoSeccionalFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.DepartamentoLocalService" class="la.netco.despachos_judiciales.entities.service.impl.DepartamentoLocalServiceImpl" />
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.DepartamentoPersistence" class="la.netco.despachos_judiciales.entities.service.persistence.DepartamentoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.DepartamentoFinder" class="la.netco.despachos_judiciales.entities.service.persistence.DepartamentoFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.DespachoLocalService" class="la.netco.despachos_judiciales.entities.service.impl.DespachoLocalServiceImpl" />
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.DespachoPersistence" class="la.netco.despachos_judiciales.entities.service.persistence.DespachoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.DespachoFinder" class="la.netco.despachos_judiciales.entities.service.persistence.DespachoFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.DistritoLocalService" class="la.netco.despachos_judiciales.entities.service.impl.DistritoLocalServiceImpl" />
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.DistritoPersistence" class="la.netco.despachos_judiciales.entities.service.persistence.DistritoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.DistritoFinder" class="la.netco.despachos_judiciales.entities.service.persistence.DistritoFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.EntidadLocalService" class="la.netco.despachos_judiciales.entities.service.impl.EntidadLocalServiceImpl" />
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.EntidadPersistence" class="la.netco.despachos_judiciales.entities.service.persistence.EntidadPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.EntidadFinder" class="la.netco.despachos_judiciales.entities.service.persistence.EntidadFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.EspecialidadLocalService" class="la.netco.despachos_judiciales.entities.service.impl.EspecialidadLocalServiceImpl" />
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.EspecialidadPersistence" class="la.netco.despachos_judiciales.entities.service.persistence.EspecialidadPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.EspecialidadFinder" class="la.netco.despachos_judiciales.entities.service.persistence.EspecialidadFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.MunicipioLocalService" class="la.netco.despachos_judiciales.entities.service.impl.MunicipioLocalServiceImpl" />
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.MunicipioPersistence" class="la.netco.despachos_judiciales.entities.service.persistence.MunicipioPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.MunicipioFinder" class="la.netco.despachos_judiciales.entities.service.persistence.MunicipioFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.RelacionTrabajadorDespachoLocalService" class="la.netco.despachos_judiciales.entities.service.impl.RelacionTrabajadorDespachoLocalServiceImpl" />
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.RelacionTrabajadorDespachoPersistence" class="la.netco.despachos_judiciales.entities.service.persistence.RelacionTrabajadorDespachoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.RelacionTrabajadorDespachoFinder" class="la.netco.despachos_judiciales.entities.service.persistence.RelacionTrabajadorDespachoFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.RelacionUsuarioConsejoLocalService" class="la.netco.despachos_judiciales.entities.service.impl.RelacionUsuarioConsejoLocalServiceImpl" />
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.RelacionUsuarioConsejoPersistence" class="la.netco.despachos_judiciales.entities.service.persistence.RelacionUsuarioConsejoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.RelacionUsuarioConsejoFinder" class="la.netco.despachos_judiciales.entities.service.persistence.RelacionUsuarioConsejoFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.TrabajadorLocalService" class="la.netco.despachos_judiciales.entities.service.impl.TrabajadorLocalServiceImpl" />
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.TrabajadorPersistence" class="la.netco.despachos_judiciales.entities.service.persistence.TrabajadorPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+	<bean id="la.netco.despachos_judiciales.entities.service.persistence.TrabajadorFinder" class="la.netco.despachos_judiciales.entities.service.persistence.TrabajadorFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDespachosDataSource" />
+	</bean>
+</beans>

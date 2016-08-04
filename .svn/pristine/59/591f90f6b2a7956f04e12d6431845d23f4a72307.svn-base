@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+	 <sql file="custom-sql/despacho.xml" />
+	 <sql file="custom-sql/departamento.xml" />
+	 <sql file="custom-sql/entidad.xml" />
+	 <sql file="custom-sql/especialidad.xml" />
+	 <sql file="custom-sql/municipio.xml" />
+	 <sql file="custom-sql/trabajador.xml" />
+	 <sql file="custom-sql/circuito.xml" />
+	 <sql file="custom-sql/consejo_seccional.xml" />
+	 <sql file="custom-sql/distrito.xml" />
+	 <sql file="custom-sql/relacionTrabajadorDespacho.xml" />
+	 <sql file="custom-sql/relacionUsuarioConsejo.xml" />
+</custom-sql>

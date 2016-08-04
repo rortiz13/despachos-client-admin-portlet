@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+	
+<h:form id="menuForm">
+	<p:panelMenu style="width:100%">
+		  
+		  <p:submenu label="#{i18n['label-menu-title']}">
+		  	<p:menuitem value="#{i18n['label-menu-ConsultaBasica']}"  action="basica" />
+		  	<p:menuitem value="#{i18n['label-menu-ConsultaAvanzada']}" action="avanzada" />
+		  </p:submenu>
+		  
+	</p:panelMenu>
+</h:form>
+
+</ui:composition>

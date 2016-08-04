@@ -1,0 +1,278 @@
+package la.netco.despachos_judiciales.publico.business.bean;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
+
+
+import la.netco.despachos_judiciales.entities.model.Departamento;
+import la.netco.despachos_judiciales.entities.model.Entidad;
+import la.netco.despachos_judiciales.entities.model.Especialidad;
+import la.netco.despachos_judiciales.entities.model.Municipio;
+import la.netco.despachos_judiciales.entities.service.DepartamentoLocalServiceUtil;
+import la.netco.despachos_judiciales.entities.service.EntidadLocalServiceUtil;
+import la.netco.despachos_judiciales.entities.service.EspecialidadLocalServiceUtil;
+import la.netco.despachos_judiciales.entities.service.MunicipioLocalServiceUtil;
+import la.netco.despachos_judiciales.publico.business.bean.utilitys.ConstantsUtility;
+import la.netco.despachos_judiciales.publico.business.datamodels.DespachosDataModel;
+
+
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+@ManagedBean(name = "consultaBasicaBean")
+@ViewScoped
+public class ConsultaBasicaBean implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private static Log _log = LogFactoryUtil.getLog(ConsultaBasicaBean.class);
+
+	private List<SelectItem> itemsMunicipios;
+	private List<SelectItem> itemsEntidad;
+	private List<SelectItem> itemsEspecialidad;
+	private HashMap<Integer, String> mapDepartamentos;
+
+	private Integer idDepartamento, idMunicipio, idEspecialidad, idEntidad;
+	private String departamentoMunicipio;
+
+	private DespachosDataModel despachos;
+
+	private boolean preRenderFlag;
+
+	public ConsultaBasicaBean() {
+		
+	}
+
+	@PostConstruct
+	public void init() {
+		System.out.println(">>> init");
+		loadItemsMunicipios();
+		loadItemsEntidad();
+		loadItemsEspecialidad();
+	}
+
+	public void municipioChange() {
+		idEntidad = null;
+		idEspecialidad = null;
+		System.out.println("--> Cambio Municipio" + departamentoMunicipio);
+		splitMunicipioDepartamento();
+		loadItemsEntidad();
+		loadItemsEspecialidad();
+
+	}
+
+	public void entidadChange() {
+		idEspecialidad = null;
+		loadItemsEspecialidad();
+
+	}
+
+	public void cleanForm() {
+		idEspecialidad = null;
+		idEntidad = null;
+		idDepartamento = null;
+		idMunicipio = null;
+		departamentoMunicipio = null;
+		despachos = null;
+		loadItemsMunicipios();
+		loadItemsEntidad();
+		loadItemsEspecialidad();
+	}
+
+	private void loadItemsMunicipios() {
+		try {
+
+			if (mapDepartamentos == null) {
+				mapDepartamentos = new HashMap<Integer, String>();
+				List<Departamento> listDepartamentos = DepartamentoLocalServiceUtil.getDepartamentos(QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+				for (Departamento departamento : listDepartamentos) {
+					mapDepartamentos.put(departamento.getCodigo(), departamento.getNombre());
+				}
+
+			}
+			System.out.println("--> size Departamentos " + mapDepartamentos.size());
+			List<Municipio> listMunicipios = MunicipioLocalServiceUtil.findByEstadoDescpacho(null);
+			itemsMunicipios = new ArrayList<SelectItem>();
+			System.out.println("--> size minicipios: " + listMunicipios.size());
+			for (Municipio municipio : listMunicipios) {
+				itemsMunicipios.add(new SelectItem(municipio.getCodigo() + "-" + municipio.getIdDepartamento(), municipio.getNombre() + " - "
+						+ mapDepartamentos.get(municipio.getIdDepartamento()).toString()));
+			}
+			System.out.println("--> size items Municipio: " + itemsMunicipios.size());
+
+		} catch (Exception e) {
+			_log.error("Exception loadItemsMunicipios", e);
+		}
+
+	}
+
+	private void loadItemsEntidad() {
+		try {
+			itemsEntidad = new ArrayList<SelectItem>();
+			List<Entidad> listEntidades = EntidadLocalServiceUtil.findByEstadoDescpacho(idDepartamento, idMunicipio);
+			System.out.println("--> size Lista entidades: " + listEntidades.size());
+			for (Entidad entidad : listEntidades) {
+				itemsEntidad.add(new SelectItem(entidad.getCodigo(), entidad.getNombre()));
+			}
+			System.out.println("--> size Lista Itemsentidades: " + itemsEntidad.size());
+		} catch (Exception e) {
+			_log.error("Exception loadItemsEntidad", e);
+		}
+	}
+
+	private void loadItemsEspecialidad() {
+		try {
+			itemsEspecialidad = new ArrayList<SelectItem>();
+			List<Especialidad> listEspecialidad = EspecialidadLocalServiceUtil.findByEstadoDescpacho(idDepartamento, idMunicipio, idEntidad);
+			System.out.println("--> size Lista Especialidad: " + listEspecialidad.size());
+			for (Especialidad especialidad : listEspecialidad) {
+				itemsEspecialidad.add(new SelectItem(especialidad.getCodigo(), especialidad.getNombre()));
+			}
+			System.out.println("--> size Lista Especialidad: " + itemsEspecialidad.size());
+		} catch (Exception e) {
+			_log.error("Exception loadItemsEspecialidad", e);
+		}
+
+	}
+
+	private void splitMunicipioDepartamento() {
+		System.out.println("--> Valor departamentoMunicipio " + departamentoMunicipio);
+		if (departamentoMunicipio != null) {
+			String valores[] = departamentoMunicipio.split("-");
+			System.out.println("--> valores size: " + valores.length);
+			idMunicipio = Integer.parseInt(valores[0]);
+			idDepartamento = Integer.parseInt(valores[1]);
+		} else {
+			idMunicipio = null;
+			idDepartamento = null;
+		}
+	}
+
+	/* Metodos datamodel */
+
+	public String cargaFiltrosDataModel() {
+		if (despachos == null)
+			despachos = new DespachosDataModel();
+
+		Map<String, Integer> filtros = new HashMap<String, Integer>();
+
+		filtros.put(ConstantsUtility.FIELD_ID_DEPARTAMENTO, idDepartamento);
+		filtros.put(ConstantsUtility.FIELD_ID_MUNICIPIO, idMunicipio);
+		filtros.put(ConstantsUtility.FIELD_ID_ENTIDAD, idEntidad);
+		filtros.put(ConstantsUtility.FIELD_ID_ESPECIALIDAD, idEspecialidad);
+		filtros.put(ConstantsUtility.FIELD_ID_CIRCUITO, null);
+		filtros.put(ConstantsUtility.FIELD_ID_CONSEJOSEC, null);
+		filtros.put(ConstantsUtility.FIELD_ID_DISTRTO, null);
+
+		System.out.println("--> Valor idDepartamento " + idDepartamento);
+		System.out.println("--> Valor idmunicipio " + idMunicipio);
+		System.out.println("--> Valor idEntidad " + idEntidad);
+		System.out.println("--> Valor idEspecialidad " + idEspecialidad);
+
+		despachos.setFiltros(filtros);
+		return "";
+
+	}
+
+	/**/
+	public List<SelectItem> getItemsMunicipios() {
+		return itemsMunicipios;
+	}
+
+	public void setItemsMunicipios(List<SelectItem> itemsMunicipios) {
+		this.itemsMunicipios = itemsMunicipios;
+	}
+
+	public List<SelectItem> getItemsEntidad() {
+		return itemsEntidad;
+	}
+
+	public void setItemsEntidad(List<SelectItem> itemsEntidad) {
+		this.itemsEntidad = itemsEntidad;
+	}
+
+	public List<SelectItem> getItemsEspecialidad() {
+		return itemsEspecialidad;
+	}
+
+	public void setItemsEspecialidad(List<SelectItem> itemsEspecialidad) {
+		this.itemsEspecialidad = itemsEspecialidad;
+	}
+
+	public Integer getIdDepartamento() {
+		return idDepartamento;
+	}
+
+	public void setIdDepartamento(Integer idDepartamento) {
+		this.idDepartamento = idDepartamento;
+	}
+
+	public Integer getIdMunicipio() {
+		return idMunicipio;
+	}
+
+	public void setIdMunicipio(Integer idMunicipio) {
+		this.idMunicipio = idMunicipio;
+	}
+
+	public Integer getIdEspecialidad() {
+		return idEspecialidad;
+	}
+
+	public void setIdEspecialidad(Integer idEspecialidad) {
+		this.idEspecialidad = idEspecialidad;
+	}
+
+	public Integer getIdEntidad() {
+		return idEntidad;
+	}
+
+	public void setIdEntidad(Integer idEntidad) {
+		this.idEntidad = idEntidad;
+	}
+
+	public HashMap<Integer, String> getMapDepartamentos() {
+		return mapDepartamentos;
+	}
+
+	public String getDepartamentoMunicipio() {
+		return departamentoMunicipio;
+	}
+
+	public void setDepartamentoMunicipio(String departamentoMunicipio) {
+		this.departamentoMunicipio = departamentoMunicipio;
+	}
+
+	public void setMapDepartamentos(HashMap<Integer, String> mapDepartamentos) {
+		this.mapDepartamentos = mapDepartamentos;
+	}
+
+	public DespachosDataModel getDespachos() {
+		return despachos;
+	}
+
+	public void setDespachos(DespachosDataModel despachos) {
+		this.despachos = despachos;
+	}
+
+	public boolean isPreRenderFlag() {
+		return preRenderFlag;
+	}
+
+	public void setPreRenderFlag(boolean preRenderFlag) {
+		this.preRenderFlag = preRenderFlag;
+	}
+
+}

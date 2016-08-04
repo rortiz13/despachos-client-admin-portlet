@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.ConsejoSeccionalFinder.findByDespacho">
+	 <![CDATA[
+		SELECT DISTINCT {CONSEJO.*} FROM GLO_CONSEJOS_SEC CONSEJO
+		INNER JOIN GLO_MUNICIPIOS MUNICIPIO  ON MUNICIPIO.MUN_CONSEJO_SEC_DIS = CONSEJO.CON_CODIGO
+		WHERE MUNICIPIO.MUN_DEPARTAMENTO = ? AND MUNICIPIO.MUN_CODIGO = ?
+		ORDER BY CON_NOMBRE
+	  ]]>
+	</sql>
+
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.ConsejoSeccionalFinder.findByFields">
+	 <![CDATA[
+		SELECT {CONSEJO.*} FROM GLO_CONSEJOS_SEC CONSEJO
+		WHERE CONSEJO.CON_CODIGO = ? AND CONSEJO.CON_NOMBRE = ? AND CONSEJO.CON_DIRECCION = ? AND CONSEJO.CON_TELEFONOS = ? AND CONSEJO.CON_CORREO_ELECTRONICO = ? AND 1=1
+		ORDER BY CONSEJO.CON_CODIGO
+	  ]]>
+	</sql>
+
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.ConsejoSeccionalFinder.countByFields">
+	 <![CDATA[
+		SELECT COUNT(CONSEJO.CON_CODIGO) AS COUNT_VALUE FROM GLO_CONSEJOS_SEC CONSEJO
+		WHERE CONSEJO.CON_CODIGO = ? AND CONSEJO.CON_NOMBRE = ? AND CONSEJO.CON_DIRECCION = ? AND CONSEJO.CON_TELEFONOS = ? AND CONSEJO.CON_CORREO_ELECTRONICO = ? AND 1=1
+		]]>
+	</sql>
+
+
+</custom-sql>

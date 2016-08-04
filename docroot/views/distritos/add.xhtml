@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jstl/core" xmlns:aui-cc="http://liferay.com/faces/aui-cc"
+	xmlns:p="http://primefaces.org/ui" template="/views/layouts/template.xhtml">
+
+	<ui:define name="body">
+		<p:panel header="#{i18n['label-title-Distritos']}">
+
+			<f:metadata>
+				<f:event type="preRenderView" listener="#{adminDistritoBean.preRenderViewAdd()}" />
+			</f:metadata>
+
+			<h:form id="addForm" prependId="false">
+
+				<p:menubar id="Navegacion">
+					<p:menuitem value="#{i18n['menu-label-Agregar']}" action="add" icon="ui-icon-plusthick"  ajax="false"/>
+					<p:menuitem value="#{i18n['menu-label-Listado']}" action="distritos" icon="ui-icon-note" ajax="false" />
+				</p:menubar>
+
+				<div class="spacer25"></div>
+
+				<p:messages id="messages" autoUpdate="true" closable="true" />
+
+				<div class="spacer25"></div>
+
+				<h:panelGrid id="distritoFields" styleClass="tableStandard" columns="2" columnClasses="column30,column80">
+
+					<p:outputLabel value="#{i18n['label-distrito-Codigo']}" for="txtCodigo" />
+					<p:inputText id="txtCodigo" value="#{adminDistritoBean.distritoSelected.codigo}" />
+
+					<p:outputLabel value="#{i18n['label-distrito-Nombre']}" for="txtNombre" />
+					<p:inputText id="txtNombre" value="#{adminDistritoBean.distritoSelected.nombre}" />
+
+
+					<p:outputLabel value="#{i18n['label-distrito-Codigo-ConsejoSeccional']}" for="txtDesConsejoSeccional" />
+					<h:panelGrid styleClass="tableStandard" columns="2">
+						<p:inputText id="txtDesConsejoSeccional" value="#{adminDistritoBean.consesjoSeccional.nombre}" disabled="true" style="width:85%;" />
+						<p:commandButton value="#{i18n['button-Buscar']}" type="button" icon="ui-icon-search" ajax="false" onclick="consejoDialog.show();" />
+					</h:panelGrid>
+
+					<p:outputLabel value="#{i18n['label-distrito-CodigoDane']}" for="txtCodigoDane" />
+					<p:inputText id="txtCodigoDane" value="#{adminDistritoBean.distritoSelected.codigo_dane}" />
+
+					<p:outputLabel value="#{i18n['label-distrito-Jurisdicion']}" for="selectJurisdiccion" />
+					<p:selectOneMenu id="selectJurisdiccion" value="#{adminDistritoBean.distritoSelected.jurisdiccion}">
+						<f:selectItems value="#{adminDistritoBean.jurisdiccionItems}" />
+					</p:selectOneMenu>
+
+				</h:panelGrid>
+
+
+				<div class="spacer25"></div>
+
+				<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+					<p:commandButton value="#{i18n['button-Guardar']}" action="#{adminDistritoBean.addObject()}" ajax="false" icon="ui-icon-disk" />
+				</h:panelGrid>
+
+
+				<p:dialog id="dialog" modal="true" header="Consejos Seccionales" widgetVar="consejoDialog" width="900">
+					<h:panelGrid>
+
+						<div class="spacer25"></div>
+
+						<h:panelGrid styleClass="tableStandard">
+							<h:panelGrid columns="2" styleClass="tabelStandard" columnClasses="column30,column70">
+								<p:outputLabel value="#{i18n['lable-distrito-filtro-Codigo']}" for="txtCodigoConsejoSec" />
+								<p:inputText id="txtCodigoConsejoSec" value="#{adminDistritoBean.codigoConsejoSec}" required="false" />
+							</h:panelGrid>
+
+							<div class="spacer25"></div>
+
+							<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+								<p:commandButton value="#{i18n['button-Buscar']}" action="#{adminDistritoBean.loadConsejos()}" icon="ui-icon-search" partialSubmit="dialog"
+									ajax="true" update="tableConsejoSec" />
+							</h:panelGrid>
+						</h:panelGrid>
+
+						<div class="spacer25"></div>
+
+
+						<p:dataTable id="tableConsejoSec" value="#{adminDistritoBean.consejos}" var="consejo" rows="5" paginator="true" paginatorPosition="bottom"
+							lazy="true" styleClass="tableStandard">
+							<f:facet name="header">  
+           					 #{i18n['label-title-ConsejosSeccionales']}
+        					</f:facet>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-consejo-Codigo']}" />
+								</f:facet>
+								<h:outputText value="#{consejo.codigo}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-consejo-Nombre']}" />
+								</f:facet>
+								<h:outputText value="#{consejo.nombre}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-consejo-Direccion']}" />
+								</f:facet>
+								<h:outputText value="#{consejo.direccion}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-consejo-Telefono']}" />
+								</f:facet>
+								<h:outputText value="#{consejo.telefonos}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-consejo-Correo']}" />
+								</f:facet>
+								<h:outputText value="#{consejo.correo_electronico}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-consejo-Opciones']}" />
+								</f:facet>
+								<p:commandButton value="#{i18n['button-Seleccionar']}" action="#{adminDistritoBean.addConsejoSec(consejo)}" update=":addForm:distritoFields"
+									ajax="true" oncomplete="consejoDialog.hide();" />
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+				</p:dialog>
+
+
+
+
+				<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+
+				<p:dialog modal="true" widgetVar="statusDialog" header="Procesando..." draggable="false" closable="false">
+					<p:graphicImage value="/images/ajaxloadingbar.gif" />
+				</p:dialog>
+
+
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

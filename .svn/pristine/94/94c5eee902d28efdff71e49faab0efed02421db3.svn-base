@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="la.netco.despachos_judiciales.entities.model.impl.CircuitoModelImpl">
+		<attributes>
+			<id name="codigo">
+				<column name="CIR_CODIGO" />
+			</id>
+			<basic name="nombre">
+				<column name="CIR_NOMBRE" />
+			</basic>
+			<basic name="idDistrito">
+				<column name="CIR_DISTRITO" />
+			</basic>
+			<basic name="jurisdiccion">
+				<column name="CIR_JURISDICCION" />
+			</basic>
+			<basic name="codigo_dane">
+				<column name="CIR_CODIGO_DANE" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.despachos_judiciales.entities.model.impl.ConsejoSeccionalModelImpl">
+		<attributes>
+			<id name="codigo">
+				<column name="CON_CODIGO" />
+			</id>
+			<basic name="nombre">
+				<column name="CON_NOMBRE" />
+			</basic>
+			<basic name="direccion">
+				<column name="CON_DIRECCION" />
+			</basic>
+			<basic name="telefonos">
+				<column name="CON_TELEFONOS" />
+			</basic>
+			<basic name="correo_electronico">
+				<column name="CON_CORREO_ELECTRONICO" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.despachos_judiciales.entities.model.impl.DepartamentoModelImpl">
+		<attributes>
+			<id name="codigo">
+				<column name="DEP_CODIGO" />
+			</id>
+			<basic name="nombre">
+				<column name="DEP_NOMBRE" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.despachos_judiciales.entities.model.impl.DespachoModelImpl">
+		<attributes>
+			<id name="codigo">
+				<column name="DES_CODIGO" />
+			</id>
+			<basic name="idDepartamento">
+				<column name="DES_DEPARTAMENTO" />
+			</basic>
+			<basic name="idMunicipio">
+				<column name="DES_MUNICIPIO" />
+			</basic>
+			<basic name="idEntidad">
+				<column name="DES_ENTIDAD" />
+			</basic>
+			<basic name="idEspecialidad">
+				<column name="DES_ESPECIALIDAD" />
+			</basic>
+			<basic name="consecutivo">
+				<column name="DES_CONSECUTIVO" />
+			</basic>
+			<basic name="nombre">
+				<column name="DES_NOMBRE" />
+			</basic>
+			<basic name="direccion">
+				<column name="DES_DIRECCION" />
+			</basic>
+			<basic name="telefonos">
+				<column name="DES_TELEFONOS" />
+			</basic>
+			<basic name="correo_electronico">
+				<column name="DES_CORREO_ELECTRONICO" />
+			</basic>
+			<basic name="acuerdo">
+				<column name="DES_ACUERDO" />
+			</basic>
+			<basic name="estado">
+				<column name="DES_ESTADO" />
+			</basic>
+			<basic name="fax">
+				<column name="DES_FAX" />
+			</basic>
+			<basic name="horario_atencion">
+				<column name="DES_HORARIO_ATENCION" />
+			</basic>
+			<basic name="fecha_act">
+				<column name="DES_FECHA_ACT" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.despachos_judiciales.entities.model.impl.DistritoModelImpl">
+		<attributes>
+			<id name="codigo">
+				<column name="DIS_CODIGO" />
+			</id>
+			<basic name="nombre">
+				<column name="DIS_NOMBRE" />
+			</basic>
+			<basic name="idConsejo_sec">
+				<column name="DIS_CONSEJO_SEC" />
+			</basic>
+			<basic name="jurisdiccion">
+				<column name="DIS_JURISDICCION" />
+			</basic>
+			<basic name="codigo_dane">
+				<column name="DIS_CODIGO_DANE" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.despachos_judiciales.entities.model.impl.EntidadModelImpl">
+		<attributes>
+			<id name="codigo">
+				<column name="ENT_CODIGO" />
+			</id>
+			<basic name="nombre">
+				<column name="ENT_NOMBRE" />
+			</basic>
+			<basic name="mascara">
+				<column name="ENT_MASCARA" />
+			</basic>
+			<basic name="jurisdiccion">
+				<column name="ENT_JURISDICCION" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.despachos_judiciales.entities.model.impl.EspecialidadModelImpl">
+		<attributes>
+			<id name="codigo">
+				<column name="ESP_CODIGO" />
+			</id>
+			<basic name="nombre">
+				<column name="ESP_NOMBRE" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.despachos_judiciales.entities.model.impl.MunicipioModelImpl">
+		<id-class class="la.netco.despachos_judiciales.entities.service.persistence.MunicipioPK" />
+		<attributes>
+			<id name="idDepartamento">
+				<column name="MUN_DEPARTAMENTO" />
+			</id>
+			<id name="codigo">
+				<column name="MUN_CODIGO" />
+			</id>
+			<basic name="nombre">
+				<column name="MUN_NOMBRE" />
+			</basic>
+			<basic name="indicativo">
+				<column name="MUN_INDICATIVO" />
+			</basic>
+			<basic name="idCircuito">
+				<column name="MUN_CIRCUITO" />
+			</basic>
+			<basic name="idCircuitoAdministrativo">
+				<column name="MUN_CIRCUITO_ADM" />
+			</basic>
+			<basic name="idConsejoSeccional">
+				<column name="MUN_CONSEJO_SEC_DIS" />
+			</basic>
+			<basic name="idCircuitoDisciplinario">
+				<column name="MUN_CIRCUITO_DIS" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.despachos_judiciales.entities.model.impl.RelacionTrabajadorDespachoModelImpl">
+		<id-class class="la.netco.despachos_judiciales.entities.service.persistence.RelacionTrabajadorDespachoPK" />
+		<attributes>
+			<id name="idDespacho">
+				<column name="TDE_DESPACHO" />
+			</id>
+			<id name="idTrabajador">
+				<column name="TDE_TRABAJADOR" />
+			</id>
+			<basic name="cargo">
+				<column name="TDE_CARGO" />
+			</basic>
+			<basic name="acuerdo">
+				<column name="TDE_ACUERDO" />
+			</basic>
+			<basic name="activo">
+				<column name="TDE_ACTIVO" />
+			</basic>
+			<basic name="fecha_ini">
+				<column name="TDE_FECHA_INI" />
+			</basic>
+			<basic name="fecha_fin">
+				<column name="TDE_FECHA_FIN" />
+			</basic>
+			<basic name="secuencia">
+				<column name="TDE_SECUENCIA" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.despachos_judiciales.entities.model.impl.RelacionUsuarioConsejoModelImpl">
+		<attributes>
+			<id name="idConsejoSec">
+				<column name="UCS_CONSEJO_SEC" />
+			</id>
+			<basic name="usuarioPortal">
+				<column name="UCS_USUARIO_PORTAL" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.despachos_judiciales.entities.model.impl.TrabajadorModelImpl">
+		<attributes>
+			<id name="cedula">
+				<column name="TRA_CEDULA" />
+			</id>
+			<basic name="nombres">
+				<column name="TRA_NOMBRES" />
+			</basic>
+			<basic name="apellidos">
+				<column name="TRA_APELLIDOS" />
+			</basic>
+			<basic name="especialidad">
+				<column name="TRA_ESPECIALIDAD" />
+			</basic>
+			<basic name="correo_electronico">
+				<column name="TRA_CORREO_ELECTRONICO" />
+			</basic>
+			<basic name="telefonos_oficina">
+				<column name="TRA_TELEFONOS_OFICINA" />
+			</basic>
+			<basic name="carrera">
+				<column name="TRA_CARRERA" />
+			</basic>
+			<basic name="tipo_trabajador">
+				<column name="TRA_TIPO_TRABAJADOR" />
+			</basic>
+			<basic name="tipo_contrato">
+				<column name="TRA_TIPO_CONTRATO" />
+			</basic>
+			<basic name="sexo">
+				<column name="TRA_SEXO" />
+			</basic>
+			<basic name="fecha_nacimiento">
+				<column name="TRA_FECHA_NACIMIENTO" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="la.netco.despachos_judiciales.entities.model.impl.CircuitoImpl" name="Circuito">
+		<table name="GLO_CIRCUITOS" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.despachos_judiciales.entities.model.impl.ConsejoSeccionalImpl" name="ConsejoSeccional">
+		<table name="GLO_CONSEJOS_SEC" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.despachos_judiciales.entities.model.impl.DepartamentoImpl" name="Departamento">
+		<table name="GLO_DEPARTAMENTOS" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.despachos_judiciales.entities.model.impl.DespachoImpl" name="Despacho">
+		<table name="ADM_DESPACHOS" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.despachos_judiciales.entities.model.impl.DistritoImpl" name="Distrito">
+		<table name="GLO_DISTRITOS" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.despachos_judiciales.entities.model.impl.EntidadImpl" name="Entidad">
+		<table name="GLO_ENTIDADES" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.despachos_judiciales.entities.model.impl.EspecialidadImpl" name="Especialidad">
+		<table name="GLO_ESPECIALIDAD" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.despachos_judiciales.entities.model.impl.MunicipioImpl" name="Municipio">
+		<table name="GLO_MUNICIPIOS" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.despachos_judiciales.entities.model.impl.RelacionTrabajadorDespachoImpl" name="RelacionTrabajadorDespacho">
+		<table name="REL_TRA_DES" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.despachos_judiciales.entities.model.impl.RelacionUsuarioConsejoImpl" name="RelacionUsuarioConsejo">
+		<table name="REL_USUARIO_CONSEJOS_SEC" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.despachos_judiciales.entities.model.impl.TrabajadorImpl" name="Trabajador">
+		<table name="ADM_TRABAJADORES" />
+		<attributes />
+	</entity>
+</entity-mappings>

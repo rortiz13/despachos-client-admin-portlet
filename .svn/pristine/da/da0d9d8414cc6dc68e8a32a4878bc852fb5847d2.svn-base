@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jstl/core" xmlns:aui-cc="http://liferay.com/faces/aui-cc"
+	xmlns:p="http://primefaces.org/ui" template="/views/layouts/template.xhtml">
+
+	<ui:define name="body">
+
+		<p:panel header="#{i18n['label-title-Entidades']}">
+
+			<f:metadata>
+				<f:event type="preRenderView" listener="#{adminEntidadesBean.loadObject()}" />
+			</f:metadata>
+
+			<h:form id="editForm" prependId="false">
+
+				<p:menubar id="Navegacion">
+					<p:menuitem value="#{i18n['menu-label-Agregar']}" action="addEntidad" icon="ui-icon-plusthick" ajax="false" />
+					<p:menuitem value="#{i18n['menu-label-Listado']}" action="entidades" icon="ui-icon-note" ajax="false" />
+				</p:menubar>
+
+				<div class="spacer25"></div>
+
+				<p:messages id="messages" autoUpdate="true" closable="true" />
+
+				<div class="spacer25"></div>
+
+				<h:panelGrid id="entidadFields" styleClass="tableStandard" columns="2" columnClasses="column30,column80" >
+
+					<p:outputLabel value="#{i18n['label-entidad-Codigo']}" for="txtCodigo" />
+					<p:inputText id="txtCodigo" value="#{adminEntidadesBean.entidadSelected.codigo}" />
+
+					<p:outputLabel value="#{i18n['label-entidad-Nombre']}" for="txtNombre" />
+					<p:inputText id="txtNombre" value="#{adminEntidadesBean.entidadSelected.nombre}" />
+					
+					<p:outputLabel value="#{i18n['label-entidad-Mascara']}" for="txtMascara" />
+					<p:inputText id="txtMascara" value="#{adminEntidadesBean.entidadSelected.mascara}" />
+
+					<p:outputLabel value="#{i18n['label-distrito-Jurisdicion']}" for="selectJurisdiccion" />
+					<p:selectOneMenu id="selectJurisdiccion" value="#{adminEntidadesBean.entidadSelected.jurisdiccion}">
+						<f:selectItems value="#{adminEntidadesBean.jurisdiccionItems}" />
+					</p:selectOneMenu>
+
+				</h:panelGrid>
+
+
+				<div class="spacer25"></div>
+
+				<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+					<p:commandButton value="#{i18n['button-Guardar']}" action="#{adminEntidadesBean.updateObject()}" ajax="false" icon="ui-icon-disk" />
+				</h:panelGrid>
+
+				<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+
+				<p:dialog modal="true" widgetVar="statusDialog" header="Procesando..." draggable="false" closable="false">
+					<p:graphicImage value="/images/ajaxloadingbar.gif" />
+				</p:dialog>
+
+
+			</h:form>
+		</p:panel>
+
+	</ui:define>
+</ui:composition>

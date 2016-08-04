@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.DepartamentoFinder.findByFields">
+	 <![CDATA[
+		SELECT {DEPARTAMENTO.*} FROM GLO_DEPARTAMENTOS DEPARTAMENTO
+		WHERE DEPARTAMENTO.DEP_CODIGO = ? AND DEPARTAMENTO.DEP_NOMBRE = ? AND 1=1
+		ORDER BY DEPARTAMENTO.DEP_NOMBRE
+	  ]]>
+	</sql>
+	
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.DepartamentoFinder.countByFields">
+	 <![CDATA[
+		SELECT COUNT(DEPARTAMENTO.DEP_CODIGO) AS COUNT_VALUE FROM GLO_DEPARTAMENTOS DEPARTAMENTO
+		WHERE DEPARTAMENTO.DEP_CODIGO = ? AND DEPARTAMENTO.DEP_NOMBRE = ? AND 1=1
+	  ]]>
+	</sql>
+	
+
+</custom-sql>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+
+	<sql id="la.netco.despachos_judiciales.entities.service.persistence.RelacionUsuarioConsejoFinder.findByUsuario">
+	 <![CDATA[
+	 	SELECT DISTINCT {USUARIOCONSEJO.*} FROM REL_USUARIO_CONSEJOS_SEC USUARIOCONSEJO
+		WHERE USUARIOCONSEJO.UCS_USUARIO_PORTAL LIKE ?
+	  ]]>
+	</sql>
+</custom-sql>

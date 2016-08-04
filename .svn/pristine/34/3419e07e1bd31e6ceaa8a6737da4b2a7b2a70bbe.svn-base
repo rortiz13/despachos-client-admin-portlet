@@ -1,0 +1,281 @@
+# Labels Memu
+menu-label-Distritos = Distritos
+menu-label-Circuitos = Circuitos
+menu-label-Municipios = Municipios
+menu-label-Entidades = Entidades
+menu-label-Especialidades = Especialidades 
+menu-label-Funcionarios = Funcionarios
+menu-label-ConsejosSeccionales = Consejos Seccionales 
+menu-label-Despachos = Despachos
+menu-label-Agregar = Agregar
+menu-label-Listado = Listado
+menu-label-Consultar = Listado
+menu-label-ConfirmacionEliminar = Confirmacion Eliminar
+menu-label-RelUsuarioConsejo = Usuarios - Consejos
+
+
+# Especialidades 
+label-title-Especialidad = Especialidades
+
+label-especialidad-Codigo = Código 
+label-especialidad-Nombre = Nombre 
+
+label-especialidad-filtro-Codigo = Código
+
+label-table-especialidad-Codigo = CÓDIGO
+label-table-especialidad-Nombre = NOMBRE
+label-table-especialidad-Opciones = OPCIONES
+
+label-message-especialidad-Delete = "¿ Esta seguro que desea elimnar esta Especialidad ?"
+
+# Despachos 
+label-title-Despachos = Despachos
+
+label-despacho-Departamento  = Departamento 
+label-despacho-Municipo  = Municipo 
+label-despacho-Entidad  = Entidad 
+label-despacho-Especialidad  = Especialidad 
+label-despacho-Consecutivo = Consecutivo
+label-despacho-Codigo = Codigo
+label-despacho-Nombre = Nombre
+label-despacho-Direccion  = Dirección
+label-despacho-Telefonos  = Teléfonos
+label-despacho-Correo  = Correo
+label-despacho-Fax  = Fax
+label-despacho-HorarioAtencion  = Horario de atención
+label-despacho-Funcionario  = Funcionario
+
+
+
+label-despacho-filtro-Codigo = CÓDIGO
+label-despacho-filtro-FechaActualizacion = FECHA ACTUALIZACIÓN
+label-despacho-filtro-FechaDesde = Desde
+label-despacho-filtro-FechaHasta = Hasta
+label-despacho-filtro-Entidad = ENTIDAD
+label-despacho-filtro-Especialidad = ESPECIALIDAD
+
+
+label-table-despacho-Departamento = CÓDIGO DEP.	
+label-table-despacho-Municipio = CÓDIGO MUN.	
+label-table-despacho-Codigo = CÓDIGO
+label-table-despacho-Nombre = NOMBRE
+label-table-despacho-CodigoEntidad = CÓDIGO ENT.	
+label-table-despacho-NombreEntidad = ENTIDAD
+label-table-despacho-CodigoEspecialidad = CÓDIGO ESP.	
+label-table-despacho-NombreEspecialidad = ESPECIALIDAD
+label-table-despacho-FechaActualizacion = FECHA ACT.	
+label-table-despacho-Opciones = OPCIONES
+
+label-message-despacho-Delete = "¿ Esta seguro que desea elimnar este Despacho ?"
+
+
+# Circuitos 
+label-title-Circuitos = Circuitos
+
+label-circuito-Codigo = Código 
+label-circuito-Nombre = Nombre 
+label-circuito-CodigoDane = Código DANE 
+label-circuito-Distrito = Distrito
+label-circuito-Jurisdiccion = Jurisdicción 
+
+label-circuito-filtro-Codigo = Código
+
+label-table-circuito-Codigo = CÓDIGO
+label-table-circuito-Nombre = NOMBRE
+label-table-circuito-CodigoDane = CÓDIGO DANE
+label-table-circuito-Distrito = DISTRITO
+label-table-circuito-Jurisdiccion = JURISDICCIÓN
+label-table-circuito-Opciones = OPCIONES
+
+label-message-circuito-Delete = "¿ Esta seguro que desea elimnar este Circuito ?"
+
+# Municipios
+
+label-title-Municipios = Municipios
+
+label-municipio-filtro-Departamento = CÓDIGO DEPARTAMENTO
+label-municipio-filtro-Codigo = CÓDIGO MUNICIPIO
+
+label-municipio-Departamento = Departamento
+label-municipio-Codigo = Código
+label-municipio-Nombre = Nombre
+label-municipio-Indicativo = Indicativo
+label-municipio-Circuito = Circuito
+label-municipio-CircuitoAdministrativo = Circuito Administrativo
+label-municipio-CircuitoDisciplinario = Circuito Disciplinario
+label-municipio-ConsejoSeccional = Consejo Seccional
+
+label-table-municipio-Departamento = CÓDIGO DEP.	 
+label-table-municipio-Codigo = CÓDIGO 
+label-table-municipio-Nombre = NOMBRE 
+label-table-municipio-Indicativo  = INDICATIVO 
+label-table-municipio-Circuito = CIRCUITO 
+label-table-municipio-CircuitoAdministrativo = CIRCUITO ADM.
+label-table-municipio-CircuitoDisciplinario = CIRCUITO DIS.	
+label-table-municipio-ConsejoSeccional = CONSEJO SECC.	
+label-table-municipio-Opciones = OPCIONES
+
+label-message-municipio-Delete = "¿ Esta seguro que desea elimnar este Municipio ?"
+
+# Departamento
+
+label-title-Departamentos = departamentos
+
+label-departamento-filtro-Codigo = CÓDIGO
+
+label-table-departamento-Codigo = CÓDIGO 
+label-table-departamento-Nombre = NOMBRE 
+label-table-departamento-Opciones = OPCIONES
+
+
+# Distritos
+
+label-title-Distritos = Distritos
+
+label-distrito-filtro-Codigo = CÓDIGO
+
+label-distrito-Codigo = Código
+label-distrito-Nombre = Nombre
+label-distrito-Codigo-ConsejoSeccional = Código Consejo Seccional
+label-distrito-CodigoDane = Código DANE
+label-distrito-Jurisdicion = Jurisdicción
+
+label-table-distrito-Codigo = CÓDIGO
+label-table-distrito-Nombre = NOMBRE
+label-table-distrito-CodigoDane = CÓDIGO DANE
+label-table-distrito-Jurisdiccion = JURISDICCIÓN
+label-table-distrito-ConsejoSec = C.S.
+label-table-distrito-Opciones = OPCIONES
+
+label-message-distrito-Delete = "¿ Esta seguro que desea elimnar este Distrito ?"
+
+
+# Consejos Seccionales
+
+label-title-ConsejosSeccionales = Consejos Seccionales 
+
+label-consejo-Codigo = Código 
+label-consejo-Nombre = Nombre 
+label-consejo-Direccion = Dirección
+label-consejo-Telefonos = Telefonos 
+label-consejo-Correo = E-Mail
+
+label-table-consejo-Codigo = CÓDIGO
+label-table-consejo-Nombre = NOMBRE
+label-table-consejo-Direccion = DIRECCIÓN
+label-table-consejo-Telefono = TELÉFONOS
+label-table-consejo-Correo = E-MAIL	
+label-table-consejo-Opciones = OPCIONES
+
+label-message-consejo-Delete = "¿ Esta seguro que desea elimnar este Entidad ?"
+
+# Entidades
+
+label-title-Entidades = Entidades
+
+label-entidad-filtro-Codigo = CÓDIGO
+
+label-entidad-Codigo = Código
+label-entidad-Nombre = Nombre
+label-entidad-Mascara = Mascara
+label-entidad-Jurisdicion = Jurisdicción
+
+label-table-entidad-Codigo = CÓDIGO
+label-table-entidad-Nombre = NOMBRE
+label-table-entidad-Mascara = MASCARA
+label-table-entidad-Jurisdiccion = JURISDICCIÓN
+label-table-entidad-Opciones = OPCIONES
+
+label-message-entidad-Delete = "¿ Esta seguro que desea elimnar este Entidad ?"
+
+
+# Funcionarios
+
+label-title-Funcionarios = Funcionarios
+
+label-entidad-filtro-cedula = Cédula 
+
+label-funcionario-Cedula = Cédula 
+label-funcionario-Nombre = Nombres 
+label-funcionario-Apellido = Apellidos 
+label-funcionario-Correo = Correo
+label-funcionario-Telefonos = Telefonos
+label-funcionario-Sexo = Sexo
+
+label-table-funcionario-Cedula = CÉDULA
+label-table-funcionario-Nombre = NOMBRES
+label-table-funcionario-Apellido = APELLIDOS
+label-table-funcionario-Correo = E-MAIL
+label-table-funcionario-Opciones = OPCIONES
+
+label-message-funcionario-Delete = "¿ Esta seguro que desea elimnar este Funcionario ?"
+
+
+# Funcionarios
+
+label-title-configuracionConsejo = Configuración Consejos
+label-table-relacion = Usuario Consejo Seccional
+label-table-relacion-idConsejo = Código Consejo
+label-table-relacion-nombre = Nombre Consejo
+label-table-relacion-usuario = Usuario Portal
+label-table-relacion-Opciones = Opciones
+
+
+
+#Relacion Usuarios
+label-table-relUsuarioConsejo = Tabla Relación Usuarios
+label-table-relUsuarioConsejo.nombre = Nombre
+label-table-relUsuarioConsejo.apellido = Apellido
+label-table-relUsuarioConsejo.usuario = Usuario
+label-table-relUsuarioConsejo.opciones = Opciones
+
+Label-relUsuarioConsejo-idConsejo = Codigo Consejo
+
+label-relUsuarioConsejo-codigoConsejo = Consejo Seccional
+label-relUsuario-usuario = Usuario
+label-usuario-name = Usuario
+label-title-usuario = Tabla de Usuario
+
+
+
+
+
+button-Agregar = Agregar
+button-Filtar = Filtar
+button-Guardar = Guardar
+button-Buscar = Buscar
+button-Seleccionar = Seleccionar
+button-Opciones = Opciones
+button-opciones-Editar = Editar
+button-opciones-Eliminar = Eliminar
+
+
+# PORLET PUBLICO
+
+label-title-portlet = DIRECTORIO DESPACHOS JUDICIALES
+
+label-menu-title = Consultas despachos
+label-menu-ConsultaBasica = Consulta Básica de Despachos Judiciales
+label-menu-ConsultaAvanzada = Consulta Avanzada de Despachos Judiciales
+
+label-MunicipioDepartamento = Municipio - Departamento
+label-Entidad = Entidad
+label-Especialidad = Especialidad
+label-Distrito = Distrito
+label-ConsejoSeccional = Consejo Seccional
+label-Circuito = Circuito
+
+table-despacho-No = No.
+table-despacho-Nombre = Despacho
+table-despacho-DepartamentoMunicipio = Dept.-Mpio.
+table-despacho-Circuito = Circuito
+table-despacho-Distrito = Distrio
+table-despacho-Direccion = Direccion
+table-despacho-Telefonos = Télefonos
+table-despacho-Funcionario = Funcionario
+table-despacho-HA = H.A.
+
+
+
+btn-Buscar = Buscar
+btn-Limpiar = Limpiar

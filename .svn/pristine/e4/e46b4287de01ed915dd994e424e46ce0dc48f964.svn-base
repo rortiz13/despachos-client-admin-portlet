@@ -1,0 +1,308 @@
+<?xml version="1.0"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jstl/core" xmlns:aui-cc="http://liferay.com/faces/aui-cc"
+	xmlns:p="http://primefaces.org/ui" template="/views/layouts/template.xhtml">
+
+	<ui:define name="body">
+		<p:panel header="#{i18n['label-title-Despachos']}">
+
+			<f:metadata>
+				<f:event type="preRenderView" listener="#{adminDespachosBean.preRenderViewAdd()}" />
+			</f:metadata>
+
+			<h:form id="addForm" prependId="false">
+
+				<p:menubar id="Navegacion">
+					<p:menuitem value="#{i18n['menu-label-Agregar']}" action="addDespacho" icon="ui-icon-plusthick" ajax="false" />
+					<p:menuitem value="#{i18n['menu-label-Listado']}" action="despachos" icon="ui-icon-note" ajax="false" />
+				</p:menubar>
+
+				<div class="spacer25"></div>
+
+				<p:messages id="messages" autoUpdate="true" closable="true" />
+
+				<div class="spacer25"></div>
+
+				<h:panelGrid id="despachoFields" styleClass="tableStandard" columns="2" columnClasses="column30,column80">
+
+					<p:outputLabel value="#{i18n['label-despacho-Departamento']}" for="selectDepartamento" />
+					<p:selectOneMenu id="selectDepartamento" value="#{adminDespachosBean.despachoSelected.idDepartamento}">
+						<f:selectItem itemLabel="Seleccione"  itemValue="-1"/>
+						<f:selectItems value="#{adminDespachosBean.listDepartametos}" />
+						<p:ajax update="selectMunicipio,txtCodDepartamento,messages" listener="#{adminDespachosBean.loadMunicipios()}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="#{i18n['label-despacho-Municipo']}" for="selectMunicipio" />
+					<p:selectOneMenu id="selectMunicipio" value="#{adminDespachosBean.despachoSelected.idMunicipio}">
+						<f:selectItem itemLabel="Seleccione" itemValue="-1"/>
+						<f:selectItems value="#{adminDespachosBean.listMunicipios}" />
+						<p:ajax update="txtCodMunicipio,txtNomMunicipio,messages" process="selectMunicipio" listener="#{adminDespachosBean.addMunicipio()}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="#{i18n['label-despacho-Entidad']}" for="txtEntidad" />
+					<h:panelGrid styleClass="tableStandard" columns="2">
+						<p:inputText id="txtEntidad" value="#{adminDespachosBean.entidadSelected.nombre}" disabled="true" style="width:85%;" />
+						<p:commandButton value="#{i18n['button-Buscar']}" type="button" icon="ui-icon-search" ajax="false" onclick="entidadesDialog.show();" />
+					</h:panelGrid>
+
+					<p:outputLabel value="#{i18n['label-despacho-Especialidad']}" for="txtEspecialidad" />
+					<h:panelGrid styleClass="tableStandard" columns="2">
+						<p:inputText id="txtEspecialidad" value="#{adminDespachosBean.especialidadSelected.nombre}" disabled="true" style="width:85%;" />
+						<p:commandButton value="#{i18n['button-Buscar']}" type="button" icon="ui-icon-search" ajax="false" onclick="especialidadesDialog.show();" />
+					</h:panelGrid>
+
+					<p:outputLabel value="#{i18n['label-despacho-Consecutivo']}" for="txtConsecutivo" />
+					<p:inputText id="txtConsecutivo" value="#{adminDespachosBean.despachoSelected.consecutivo}">
+						<p:ajax event="blur" update="txtNomConsecutivo,txtCodConsecutivo" listener="#{adminDespachosBean.addConsecutivo()}" />
+					</p:inputText>
+
+					<h:outputLabel value="#{i18n['label-despacho-Codigo']}" />
+					<h:panelGrid columns="5" columnClasses="columnDespacho,columnDespacho,columnDespacho,columnDespacho,columnDespacho">
+						<h:outputLabel id="txtCodDepartamento" value="#{adminDespachosBean.stgDepartamento} " styleClass="labelsDespacho" />
+						<h:outputLabel id="txtCodMunicipio" value="#{adminDespachosBean.stgMunicipio} " styleClass="labelsDespacho" />
+						<h:outputLabel id="txtCodEntidad" value="#{adminDespachosBean.stgEntidad} " styleClass="labelsDespacho" />
+						<h:outputLabel id="txtCodEspecialidad" value="#{adminDespachosBean.stgEspecialidad} " styleClass="labelsDespacho" />
+						<h:outputLabel id="txtCodConsecutivo" value="#{adminDespachosBean.stgConsecutivo} " styleClass="labelsDespacho" />
+					</h:panelGrid>
+
+					<h:outputLabel value="#{i18n['label-despacho-Nombre']}" />
+					<h:panelGrid columns="4" columnClasses="columnDespacho,columnDespacho,columnDespacho,columnDespacho">
+						<h:outputLabel id="txtNomEntidad" value="#{adminDespachosBean.entidadSelected.nombre} " styleClass="labelsDespacho" />
+						<h:outputLabel id="txtNomConsecutivo" value="#{adminDespachosBean.stgConsecutivo} " styleClass="labelsDespacho" />
+						<h:outputLabel id="txtNomEspecialidad" value="#{adminDespachosBean.especialidadSelected.nombre} " styleClass="labelsDespacho" />
+						<h:outputLabel id="txtNomMunicipio" value="#{adminDespachosBean.municipioSelected.nombre} " styleClass="labelsDespacho" />
+					</h:panelGrid>
+
+					<p:outputLabel value="#{i18n['label-despacho-Direccion']}" for="txtDireccion" />
+					<p:inputText id="txtDireccion" value="#{adminDespachosBean.despachoSelected.direccion}" />
+
+					<p:outputLabel value="#{i18n['label-despacho-Telefonos']}" for="txtTelefono" />
+					<p:inputText id="txtTelefono" value="#{adminDespachosBean.despachoSelected.telefonos}" />
+
+					<p:outputLabel value="#{i18n['label-despacho-Correo']}" for="txtCorreo" />
+					<p:inputText id="txtCorreo" value="#{adminDespachosBean.despachoSelected.correo_electronico}" />
+
+					<p:outputLabel value="#{i18n['label-despacho-Fax']}" for="txtFax" />
+					<p:inputText id="txtFax" value="#{adminDespachosBean.despachoSelected.fax}" />
+
+					<p:outputLabel value="#{i18n['label-despacho-HorarioAtencion']}" for="txtHorario" />
+					<p:inputText id="txtHorario" value="#{adminDespachosBean.despachoSelected.horario_atencion}" />
+
+					<p:outputLabel value="#{i18n['label-despacho-Funcionario']}" for="txtFuncionario" />
+					<h:panelGrid styleClass="tableStandard" columns="2">
+						<p:inputText id="txtFuncionario" value="#{adminDespachosBean.trabajadorSelected.nombres}" disabled="true" style="width:85%;" />
+						<p:commandButton value="#{i18n['button-Buscar']}" type="button" icon="ui-icon-search" ajax="false" onclick="funcionariosDialog.show();" />
+					</h:panelGrid>
+
+
+				</h:panelGrid>
+				
+				<div class="spacer25"></div>
+
+				<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+					<p:commandButton value="#{i18n['button-Guardar']}" action="#{adminDespachosBean.addObject()}" ajax="false" icon="ui-icon-disk" />
+				</h:panelGrid>
+				
+
+				<p:dialog id="dialogFuncionarios" modal="true" header="Entidades" widgetVar="funcionariosDialog" width="900">
+					<h:panelGrid styleClass="tableStandard">
+						<div class="spacer25"></div>
+
+						<h:panelGrid styleClass="tableStandard">
+							<h:panelGrid columns="2" styleClass="tableStandard" columnClasses="column30,column70">
+								<p:outputLabel value="#{i18n['label-funcionario-filtro-Codigo']}" for="txtIdFuncionario" />
+								<p:inputText id="txtIdFuncionario" value="#{adminDespachosBean.codigoTrabajador}" required="false" />
+							</h:panelGrid>
+
+							<div class="spacer25"></div>
+
+							<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+								<p:commandButton value="#{i18n['button-Buscar']}" action="#{adminDespachosBean.loadEntidades()}" icon="ui-icon-search" partialSubmit="dialog"
+									ajax="true" update="tableEntidades" />
+							</h:panelGrid>
+						</h:panelGrid>
+
+						<p:dataTable id="tableFuncionarios" value="#{adminDespachosBean.trabajadores}" var="trabajador" rows="10" paginator="true"
+							paginatorPosition="bottom" lazy="true" styleClass="tableStandard">
+							<f:facet name="header">  
+           					 #{i18n['label-title-Funcionarios']}
+        					</f:facet>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-funcionario-Cedula']}" />
+								</f:facet>
+								<h:outputText value="#{trabajador.cedula}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-funcionario-Nombre']}" />
+								</f:facet>
+								<h:outputText value="#{trabajador.nombres}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-funcionario-Apellido']}" />
+								</f:facet>
+								<h:outputText value="#{trabajador.apellidos}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-funcionario-Correo']}" />
+								</f:facet>
+								<h:outputText value="#{trabajador.correo_electronico}" />
+							</p:column>
+
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-funcionario-Opciones']}" />
+								</f:facet>
+								<p:commandButton value="#{i18n['button-Seleccionar']}" action="#{adminDespachosBean.addTrabajador(trabajador)}"
+									update=":addForm:txtFuncionario" ajax="true" oncomplete="funcionariosDialog.hide();" />
+
+							</p:column>
+
+						</p:dataTable>
+
+
+					</h:panelGrid>
+				</p:dialog>
+
+
+
+				<p:dialog id="dialogEntidades" modal="true" header="Entidades" widgetVar="entidadesDialog" width="900">
+					<h:panelGrid styleClass="tableStandard">
+						<div class="spacer25"></div>
+
+						<h:panelGrid styleClass="tableStandard">
+							<h:panelGrid columns="2" styleClass="tableStandard" columnClasses="column30,column70">
+								<p:outputLabel value="#{i18n['label-entidad-filtro-Codigo']}" for="txtIdEntidad" />
+								<p:inputText id="txtIdEntidad" value="#{adminDespachosBean.codigoEntidad}" required="false" />
+							</h:panelGrid>
+
+							<div class="spacer25"></div>
+
+							<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+								<p:commandButton value="#{i18n['button-Buscar']}" action="#{adminDespachosBean.loadEntidades()}" icon="ui-icon-search" partialSubmit="dialog"
+									ajax="true" update="tableEntidades" />
+							</h:panelGrid>
+						</h:panelGrid>
+
+						<p:dataTable id="tableEntidades" value="#{adminDespachosBean.entidades}" var="entidad" rows="10" paginator="true" paginatorPosition="bottom"
+							lazy="true" styleClass="tableStandard">
+							<f:facet name="header">  
+           					 #{i18n['label-title-Entidades']}
+        					</f:facet>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-entidad-Codigo']}" />
+								</f:facet>
+								<h:outputText value="#{entidad.codigo}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-entidad-Nombre']}" />
+								</f:facet>
+								<h:outputText value="#{entidad.nombre}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-entidad-Mascara']}" />
+								</f:facet>
+
+								<h:outputText value="#{entidad.mascara}" />
+
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-entidad-Jurisdiccion']}" />
+								</f:facet>
+								<h:outputText value="#{entidad.jurisdiccion}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-entidad-Opciones']}" />
+								</f:facet>
+								<p:commandButton value="#{i18n['button-Seleccionar']}" action="#{adminDespachosBean.addEntidad(entidad)}"
+									update=":addForm:txtCodEntidad,:addForm:txtNomEntidad,:addForm:txtEntidad" ajax="true" oncomplete="entidadesDialog.hide();" />
+							</p:column>
+
+						</p:dataTable>
+
+					</h:panelGrid>
+				</p:dialog>
+
+
+				<p:dialog id="dialogEspecialidades" modal="true" header="Especialidad" widgetVar="especialidadesDialog" width="900">
+					<h:panelGrid styleClass="tableStandard">
+						<div class="spacer25"></div>
+
+						<h:panelGrid styleClass="tableStandard">
+							<h:panelGrid columns="2" styleClass="tableStandard" columnClasses="column30,column70">
+								<p:outputLabel value="#{i18n['label-especialidad-filtro-Codigo']}" for="txtIdEspecialidad" />
+								<p:inputText id="txtIdEspecialidad" value="#{adminDespachosBean.codigoEspecialidad}" required="false" />
+							</h:panelGrid>
+
+							<div class="spacer25"></div>
+
+							<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+								<p:commandButton value="#{i18n['button-Buscar']}" action="#{adminDespachosBean.loadEspecialidades()}" icon="ui-icon-search"
+									partialSubmit="dialog" ajax="true" update="tableEspecialidades" />
+							</h:panelGrid>
+						</h:panelGrid>
+
+
+						<p:dataTable id="tableEspecialidades" value="#{adminDespachosBean.especialidades}" var="especialidad" rows="10" paginator="true"
+							paginatorPosition="bottom" lazy="true" styleClass="tableStandard">
+							<f:facet name="header">  
+           					 #{i18n['label-title-Especialidad']}
+        					</f:facet>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-especialidad-Codigo']}" />
+								</f:facet>
+								<h:outputText value="#{especialidad.codigo}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-especialidad-Nombre']}" />
+								</f:facet>
+								<h:outputText value="#{especialidad.nombre}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-entidad-Opciones']}" />
+								</f:facet>
+								<p:commandButton value="#{i18n['button-Seleccionar']}" action="#{adminDespachosBean.addEspecialidad(especialidad)}"
+									update=":addForm:txtCodEspecialidad,:addForm:txtNomEspecialidad,:addForm:txtEspecialidad" ajax="true"
+									oncomplete="especialidadesDialog.hide();" />
+							</p:column>
+
+						</p:dataTable>
+
+					</h:panelGrid>
+				</p:dialog>
+
+
+				<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+
+				<p:dialog modal="true" widgetVar="statusDialog" header="Procesando..." draggable="false" closable="false">
+					<p:graphicImage value="/images/ajaxloadingbar.gif" />
+				</p:dialog>
+
+
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

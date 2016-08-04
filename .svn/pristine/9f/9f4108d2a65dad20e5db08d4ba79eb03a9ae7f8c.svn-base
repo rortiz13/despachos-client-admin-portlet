@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="la.netco.despachos_judiciales.entities.model.Circuito" />
+	<import class="la.netco.despachos_judiciales.entities.model.ConsejoSeccional" />
+	<import class="la.netco.despachos_judiciales.entities.model.Departamento" />
+	<import class="la.netco.despachos_judiciales.entities.model.Despacho" />
+	<import class="la.netco.despachos_judiciales.entities.model.Distrito" />
+	<import class="la.netco.despachos_judiciales.entities.model.Entidad" />
+	<import class="la.netco.despachos_judiciales.entities.model.Especialidad" />
+	<import class="la.netco.despachos_judiciales.entities.model.Municipio" />
+	<import class="la.netco.despachos_judiciales.entities.model.RelacionTrabajadorDespacho" />
+	<import class="la.netco.despachos_judiciales.entities.model.RelacionUsuarioConsejo" />
+	<import class="la.netco.despachos_judiciales.entities.model.Trabajador" />
+	<class name="la.netco.despachos_judiciales.entities.model.impl.CircuitoImpl" table="GLO_CIRCUITOS">
+		<cache usage="read-write" />
+		<id name="codigo" column="CIR_CODIGO" type="int">
+			<generator class="assigned" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CIR_NOMBRE" />
+		<property name="idDistrito" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="CIR_DISTRITO" />
+		<property name="jurisdiccion" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CIR_JURISDICCION" />
+		<property name="codigo_dane" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CIR_CODIGO_DANE" />
+	</class>
+	<class name="la.netco.despachos_judiciales.entities.model.impl.ConsejoSeccionalImpl" table="GLO_CONSEJOS_SEC">
+		<cache usage="read-write" />
+		<id name="codigo" column="CON_CODIGO" type="int">
+			<generator class="assigned" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CON_NOMBRE" />
+		<property name="direccion" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CON_DIRECCION" />
+		<property name="telefonos" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CON_TELEFONOS" />
+		<property name="correo_electronico" type="com.liferay.portal.dao.orm.hibernate.StringType" column="CON_CORREO_ELECTRONICO" />
+	</class>
+	<class name="la.netco.despachos_judiciales.entities.model.impl.DepartamentoImpl" table="GLO_DEPARTAMENTOS">
+		<cache usage="read-write" />
+		<id name="codigo" column="DEP_CODIGO" type="int">
+			<generator class="assigned" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DEP_NOMBRE" />
+	</class>
+	<class name="la.netco.despachos_judiciales.entities.model.impl.DespachoImpl" table="ADM_DESPACHOS">
+		<cache usage="read-write" />
+		<id name="codigo" column="DES_CODIGO" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="idDepartamento" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="DES_DEPARTAMENTO" />
+		<property name="idMunicipio" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="DES_MUNICIPIO" />
+		<property name="idEntidad" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="DES_ENTIDAD" />
+		<property name="idEspecialidad" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="DES_ESPECIALIDAD" />
+		<property name="consecutivo" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DES_CONSECUTIVO" />
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DES_NOMBRE" />
+		<property name="direccion" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DES_DIRECCION" />
+		<property name="telefonos" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DES_TELEFONOS" />
+		<property name="correo_electronico" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DES_CORREO_ELECTRONICO" />
+		<property name="acuerdo" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DES_ACUERDO" />
+		<property name="estado" type="com.liferay.portal.dao.orm.hibernate.LongType" column="DES_ESTADO" />
+		<property name="fax" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DES_FAX" />
+		<property name="horario_atencion" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DES_HORARIO_ATENCION" />
+		<property name="fecha_act" type="org.hibernate.type.TimestampType" column="DES_FECHA_ACT" />
+	</class>
+	<class name="la.netco.despachos_judiciales.entities.model.impl.DistritoImpl" table="GLO_DISTRITOS">
+		<cache usage="read-write" />
+		<id name="codigo" column="DIS_CODIGO" type="int">
+			<generator class="assigned" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DIS_NOMBRE" />
+		<property name="idConsejo_sec" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="DIS_CONSEJO_SEC" />
+		<property name="jurisdiccion" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DIS_JURISDICCION" />
+		<property name="codigo_dane" type="com.liferay.portal.dao.orm.hibernate.StringType" column="DIS_CODIGO_DANE" />
+	</class>
+	<class name="la.netco.despachos_judiciales.entities.model.impl.EntidadImpl" table="GLO_ENTIDADES">
+		<cache usage="read-write" />
+		<id name="codigo" column="ENT_CODIGO" type="int">
+			<generator class="assigned" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" column="ENT_NOMBRE" />
+		<property name="mascara" type="com.liferay.portal.dao.orm.hibernate.StringType" column="ENT_MASCARA" />
+		<property name="jurisdiccion" type="com.liferay.portal.dao.orm.hibernate.StringType" column="ENT_JURISDICCION" />
+	</class>
+	<class name="la.netco.despachos_judiciales.entities.model.impl.EspecialidadImpl" table="GLO_ESPECIALIDAD">
+		<cache usage="read-write" />
+		<id name="codigo" column="ESP_CODIGO" type="int">
+			<generator class="assigned" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" column="ESP_NOMBRE" />
+	</class>
+	<class name="la.netco.despachos_judiciales.entities.model.impl.MunicipioImpl" table="GLO_MUNICIPIOS">
+		<cache usage="read-write" />
+		<composite-id name="primaryKey" class="la.netco.despachos_judiciales.entities.service.persistence.MunicipioPK">
+			<key-property name="idDepartamento" column="MUN_DEPARTAMENTO" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+			<key-property name="codigo" column="MUN_CODIGO" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		</composite-id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" column="MUN_NOMBRE" />
+		<property name="indicativo" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="MUN_INDICATIVO" />
+		<property name="idCircuito" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="MUN_CIRCUITO" />
+		<property name="idCircuitoAdministrativo" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="MUN_CIRCUITO_ADM" />
+		<property name="idConsejoSeccional" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="MUN_CONSEJO_SEC_DIS" />
+		<property name="idCircuitoDisciplinario" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="MUN_CIRCUITO_DIS" />
+	</class>
+	<class name="la.netco.despachos_judiciales.entities.model.impl.RelacionTrabajadorDespachoImpl" table="REL_TRA_DES">
+		<cache usage="read-write" />
+		<composite-id name="primaryKey" class="la.netco.despachos_judiciales.entities.service.persistence.RelacionTrabajadorDespachoPK">
+			<key-property name="idDespacho" column="TDE_DESPACHO" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+			<key-property name="idTrabajador" column="TDE_TRABAJADOR" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		</composite-id>
+		<property name="cargo" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TDE_CARGO" />
+		<property name="acuerdo" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TDE_ACUERDO" />
+		<property name="activo" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TDE_ACTIVO" />
+		<property name="fecha_ini" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TDE_FECHA_INI" />
+		<property name="fecha_fin" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TDE_FECHA_FIN" />
+		<property name="secuencia" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TDE_SECUENCIA" />
+	</class>
+	<class name="la.netco.despachos_judiciales.entities.model.impl.RelacionUsuarioConsejoImpl" table="REL_USUARIO_CONSEJOS_SEC">
+		<cache usage="read-write" />
+		<id name="idConsejoSec" column="UCS_CONSEJO_SEC" type="int">
+			<generator class="assigned" />
+		</id>
+		<property name="usuarioPortal" type="com.liferay.portal.dao.orm.hibernate.StringType" column="UCS_USUARIO_PORTAL" />
+	</class>
+	<class name="la.netco.despachos_judiciales.entities.model.impl.TrabajadorImpl" table="ADM_TRABAJADORES">
+		<cache usage="read-write" />
+		<id name="cedula" column="TRA_CEDULA" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="nombres" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRA_NOMBRES" />
+		<property name="apellidos" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRA_APELLIDOS" />
+		<property name="especialidad" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRA_ESPECIALIDAD" />
+		<property name="correo_electronico" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRA_CORREO_ELECTRONICO" />
+		<property name="telefonos_oficina" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRA_TELEFONOS_OFICINA" />
+		<property name="carrera" type="com.liferay.portal.dao.orm.hibernate.LongType" column="TRA_CARRERA" />
+		<property name="tipo_trabajador" type="com.liferay.portal.dao.orm.hibernate.LongType" column="TRA_TIPO_TRABAJADOR" />
+		<property name="tipo_contrato" type="com.liferay.portal.dao.orm.hibernate.LongType" column="TRA_TIPO_CONTRATO" />
+		<property name="sexo" type="com.liferay.portal.dao.orm.hibernate.StringType" column="TRA_SEXO" />
+		<property name="fecha_nacimiento" type="org.hibernate.type.TimestampType" column="TRA_FECHA_NACIMIENTO" />
+	</class>
+</hibernate-mapping>

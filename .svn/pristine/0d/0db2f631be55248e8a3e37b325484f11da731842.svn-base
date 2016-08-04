@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jstl/core" xmlns:aui-cc="http://liferay.com/faces/aui-cc"
+	xmlns:p="http://primefaces.org/ui" template="/views/layouts/template.xhtml">
+
+	<ui:define name="body">
+
+		<p:panel header="#{i18n['label-title-Especialidades']}">
+
+			<f:metadata>
+				<f:event type="preRenderView" listener="#{adminFuncionarioBean.loadObject()}" />
+			</f:metadata>
+
+			<h:form id="editForm" prependId="false">
+
+				<p:menubar id="Navegacion">
+					<p:menuitem value="Agregar" action="addFuncionario" icon="ui-icon-plusthick" ajax="false" />
+					<p:menuitem value="Listado" action="funcionarios" icon="ui-icon-note" ajax="false" />
+				</p:menubar>
+
+				<div class="spacer25"></div>
+
+				<p:messages id="messages" autoUpdate="true" closable="true" />
+
+				<div class="spacer25"></div>
+
+				<h:panelGrid id="funcionarioFields" styleClass="tableStandard" columns="2" columnClasses="column30,column80">
+
+					<p:outputLabel value="#{i18n['label-funcionario-Cedula']}" for="txtCedula" />
+					<p:inputText id="txtCedula" value="#{adminFuncionarioBean.trabajadorSelected.cedula}" />
+
+					<p:outputLabel value="#{i18n['label-funcionario-Nombre']}" for="txtNombre" />
+					<p:inputText id="txtNombre" value="#{adminFuncionarioBean.trabajadorSelected.nombres}" />
+
+					<p:outputLabel value="#{i18n['label-funcionario-Apellido']}" for="txtApellido" />
+					<p:inputText id="txtApellido" value="#{adminFuncionarioBean.trabajadorSelected.apellidos}" />
+
+					<p:outputLabel value="#{i18n['label-funcionario-Correo']}" for="txtCorreo" />
+					<p:inputText id="txtCorreo" value="#{adminFuncionarioBean.trabajadorSelected.correo_electronico}" />
+
+					<p:outputLabel value="#{i18n['label-funcionario-Telefonos']}" for="txtTelefonos" />
+					<p:inputText id="txtTelefonos" value="#{adminFuncionarioBean.trabajadorSelected.telefonos_oficina}" />
+					
+					<p:outputLabel value="#{i18n['label-funcionario-Sexo']}" for="selectSexo" />
+					<p:selectOneMenu id="selectSexo" value="#{adminFuncionarioBean.trabajadorSelected.sexo}">
+						<f:selectItem itemLabel="Seleccione" />
+						<f:selectItems value="#{adminFuncionarioBean.sexoItems}" />
+					</p:selectOneMenu>
+
+				</h:panelGrid>
+
+
+				<div class="spacer25"></div>
+
+				<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+					<p:commandButton value="#{i18n['button-Guardar']}" action="#{adminFuncionarioBean.updateObject()}" icon="ui-icon-disk" ajax="false" />
+				</h:panelGrid>
+
+				<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+
+				<p:dialog modal="true" widgetVar="statusDialog" header="Procesando..." draggable="false" closable="false">
+					<p:graphicImage value="/images/ajaxloadingbar.gif" />
+				</p:dialog>
+			</h:form>
+		</p:panel>
+
+	</ui:define>
+</ui:composition>

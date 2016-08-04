@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jstl/core" xmlns:aui-cc="http://liferay.com/faces/aui-cc"
+	xmlns:p="http://primefaces.org/ui" template="/views/layouts/template.xhtml">
+	<ui:define name="body">
+		<p:panel header="#{i18n['label-title-Funcionarios']}">
+
+			<f:metadata>
+				<f:event type="preRenderView" listener="#{adminFuncionarioBean.loadDatamodel()}" />
+			</f:metadata>
+
+			<h:form id="formFuncionarios" prependId="false">
+
+
+				<p:menubar id="Navegacion">
+					<p:menuitem value="Agregar" action="addFuncionario" icon="ui-icon-plusthick"  ajax="false"/>
+					<p:menuitem value="Listado" action="funcionarios" icon="ui-icon-note" ajax="false" />
+				</p:menubar>
+
+				<div class="spacer25"></div>
+
+				<p:messages id="messages" autoUpdate="true" closable="true"  />
+
+				<div class="spacer25"></div>
+
+				<h:panelGroup>
+					<h:panelGrid columns="2" styleClass="tabelStandard" columnClasses="column30,column70">
+						<p:outputLabel value="#{i18n['label-funcionario-Cedula']}" for="txtCedula" />
+						<p:inputText id="txtCedula" value="#{adminFuncionarioBean.cedula}" required="false" />
+					</h:panelGrid>
+
+					<div class="spacer25"></div>
+
+					<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+						<p:commandButton value="#{i18n['button-Buscar']}" action="#{adminFuncionarioBean.cargaFiltrosDataModel()}" icon="ui-icon-search" ajax="true"
+							update="panelFuncionarios" />
+					</h:panelGrid>
+
+					<div class="spacer25"></div>
+
+
+					<p:outputPanel id="panelFuncionarios">
+						<p:dataTable id="tableFuncionarios" value="#{adminFuncionarioBean.trabajadores}" var="trabajador" rows="10" paginator="true"
+							paginatorPosition="bottom" lazy="true" styleClass="tableStandard">
+							<f:facet name="header">  
+           					 #{i18n['label-title-Funcionarios']}
+        					</f:facet>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-funcionario-Cedula']}" />
+								</f:facet>
+								<h:outputText value="#{trabajador.cedula}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-funcionario-Nombre']}" />
+								</f:facet>
+								<h:outputText value="#{trabajador.nombres}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-funcionario-Apellido']}" />
+								</f:facet>
+								<h:outputText value="#{trabajador.apellidos}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-funcionario-Correo']}" />
+								</f:facet>
+								<h:outputText value="#{trabajador.correo_electronico}" />
+							</p:column>
+							
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-funcionario-Opciones']}" />
+								</f:facet>
+								<p:commandButton id="opcButton" value="#{i18n['button-Opciones']}" type="button" icon="ui-icon-gear" />
+
+								<p:tieredMenu overlay="true" trigger="opcButton" my="left top" at="left bottom" style="width:180px;">
+
+									<p:menuitem value="#{i18n['button-opciones-Editar']}" action="updateFuncionario" ajax="false" icon="ui-icon-pencil">
+										<f:param name="idRegSeleccionado" value="#{trabajador.cedula}" />
+									</p:menuitem>
+
+									<p:menuitem value="#{i18n['button-opciones-Eliminar']}" action="#{adminFuncionarioBean.selectObject(trabajador)}"
+										oncomplete="confirmationDelete.show();" icon="ui-icon-close" />
+
+								</p:tieredMenu>
+							</p:column>
+
+						</p:dataTable>
+					</p:outputPanel>
+
+				</h:panelGroup>
+
+
+				<p:confirmDialog id="DeleteDialog" message="#{i18n['label-message-funcionario-Delete']}" header="#{i18n['menu-label-ConfirmacionEliminar']}"
+					severity="alert" widgetVar="confirmationDelete">
+
+					<p:commandButton id="confirm" value="Si" onclick="confirmationDelete.hide()" update="tableFuncionarios"
+						actionListener="#{adminFuncionarioBean.deleteObject()}" />
+					<p:commandButton id="decline" value="No" onclick="confirmationDelete.hide()" type="button" />
+
+				</p:confirmDialog>
+
+				<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+
+				<p:dialog modal="true" widgetVar="statusDialog" header="Procesando..." draggable="false" closable="false">
+					<p:graphicImage value="/images/ajaxloadingbar.gif" />
+				</p:dialog>
+
+			</h:form>
+		</p:panel>
+
+	</ui:define>
+</ui:composition>

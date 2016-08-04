@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jstl/core" xmlns:aui-cc="http://liferay.com/faces/aui-cc"
+	xmlns:p="http://primefaces.org/ui" template="/views/layouts/template.xhtml">
+
+	<ui:define name="body">
+
+		<p:panel header="#{i18n['label-title-Circuitos']}">
+
+			<f:metadata>
+				<f:event type="preRenderView" listener="#{adminCircuitosBean.loadObject()}" />
+			</f:metadata>
+
+			<h:form id="editForm" prependId="false">
+
+				<p:menubar id="Navegacion">
+					<p:menuitem value="#{i18n['menu-label-Agregar']}" action="add" icon="ui-icon-plusthick" ajax="false"/>
+					<p:menuitem value="#{i18n['menu-label-Listado']}" action="circuitos" icon="ui-icon-note" ajax="false" />
+				</p:menubar>
+
+				<div class="spacer25"></div>
+
+				<p:messages id="messages" autoUpdate="true" closable="true" />
+
+				<div class="spacer25"></div>
+
+				<h:panelGrid id="circuitoFields" styleClass="tableStandard" columns="2" columnClasses="column30,column80">
+
+					<p:outputLabel value="#{i18n['label-circuito-Codigo']}" for="txtCodigo" />
+					<p:inputText id="txtCodigo" value="#{adminCircuitosBean.circuitoSelected.codigo}" />
+
+					<p:outputLabel value="#{i18n['label-circuito-Nombre']}" for="txtNombre" />
+					<p:inputText id="txtNombre" value="#{adminCircuitosBean.circuitoSelected.nombre}" />
+
+
+					<p:outputLabel value="#{i18n['label-circuito-Distrito']}" for="txtDistrito" />
+					<h:panelGrid styleClass="tableStandard" columns="2">
+						<p:inputText id="txtDistrito" value="#{adminCircuitosBean.distritoSelected.nombre}" disabled="true" style="width:85%;" />
+						<p:commandButton value="#{i18n['button-Buscar']}" type="button" icon="ui-icon-search" ajax="false" onclick="distritosDialog.show();" />
+					</h:panelGrid>
+
+					<p:outputLabel value="#{i18n['label-circuito-CodigoDane']}" for="txtCodigoDane" />
+					<p:inputText id="txtCodigoDane" value="#{adminCircuitosBean.circuitoSelected.codigo_dane}" />
+
+					<p:outputLabel value="#{i18n['label-circuito-Jurisdiccion']}" for="selectJurisdiccion" />
+					<p:selectOneMenu id="selectJurisdiccion" value="#{adminCircuitosBean.circuitoSelected.jurisdiccion}">
+						<f:selectItems value="#{adminCircuitosBean.jurisdiccionItems}" />
+					</p:selectOneMenu>
+
+				</h:panelGrid>
+
+
+				<div class="spacer25"></div>
+
+				<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+					<p:commandButton value="#{i18n['button-Guardar']}" action="#{adminCircuitosBean.updateObject()}" icon="ui-icon-disk" ajax="false"/>
+				</h:panelGrid>
+
+
+				<p:dialog id="dialog" modal="true" header="Distritos" widgetVar="distritosDialog" width="900">
+					<h:panelGrid styleClass="tableStandard">
+
+						<div class="spacer25"></div>
+
+						<h:panelGrid styleClass="tableStandard">
+							<h:panelGrid columns="2" styleClass="tabelStandard" columnClasses="column30,column70">
+								<p:outputLabel value="#{i18n['label-distrito-filtro-Codigo']}" for="txtIdDistrito" />
+								<p:inputText id="txtIdDistrito" value="#{adminCircuitosBean.idDistritoSelected}" required="false" />
+							</h:panelGrid>
+
+							<div class="spacer25"></div>
+
+							<h:panelGrid styleClass="tableStandard" style="text-align: center;">
+								<p:commandButton value="#{i18n['button-Buscar']}" action="#{adminCircuitosBean.loadDistritos()}" icon="ui-icon-search" partialSubmit="dialog"
+									ajax="true" update="tableDistritos" />
+							</h:panelGrid>
+						</h:panelGrid>
+
+						<div class="spacer25"></div>
+
+
+						<p:dataTable id="tableDistritos" value="#{adminCircuitosBean.distritos}" var="distrito" rows="5" paginator="true" paginatorPosition="bottom"
+							lazy="true" styleClass="tableStandard">
+							<f:facet name="header">  
+           					 #{i18n['label-title-Distritos']}
+        					</f:facet>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-distrito-Codigo']}" />
+								</f:facet>
+								<h:outputText value="#{distrito.codigo}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-distrito-Nombre']}" />
+								</f:facet>
+								<h:outputText value="#{distrito.nombre}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-distrito-CodigoDane']}" />
+								</f:facet>
+								<h:outputText value="#{distrito.codigo_dane}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-distrito-Jurisdiccion']}" />
+								</f:facet>
+								<h:outputText value="#{distrito.jurisdiccion}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-distrito-ConsejoSec']}" />
+								</f:facet>
+								<h:outputText value="#{distrito.idConsejo_sec}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="#{i18n['label-table-distrito-Opciones']}" />
+								</f:facet>
+								<p:commandButton value="#{i18n['button-Seleccionar']}" action="#{adminCircuitosBean.addDistrito(distrito)}" update=":editForm:circuitoFields"
+									ajax="true" oncomplete="distritosDialog.hide();" />
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+				</p:dialog>
+
+
+
+
+				<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+
+				<p:dialog modal="true" widgetVar="statusDialog" header="Procesando..." draggable="false" closable="false">
+					<p:graphicImage value="/images/ajaxloadingbar.gif" />
+				</p:dialog>
+
+
+			</h:form>
+		</p:panel>
+
+	</ui:define>
+</ui:composition>

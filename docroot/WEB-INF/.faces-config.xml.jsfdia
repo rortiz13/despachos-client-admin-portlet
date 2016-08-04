@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#views#*" PATH="/views/*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#views#*:0" NAME="item" PATH="/views/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="inicio::#views#index.xhtml" NAME="output"
+    PATH="/views/index.xhtml" TARGET="rules:#views#index.xhtml"
+    TITLE="inicio" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="distritos::#views#distritos#distritos.xhtml"
+    NAME="output1" PATH="/views/distritos/distritos.xhtml"
+    TARGET="rules:#views#distritos#distritos.xhtml" TITLE="distritos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addDistritos::#views#distritos#add.xhtml"
+    NAME="output2" PATH="/views/distritos/add.xhtml"
+    TARGET="rules:#views#distritos#add.xhtml" TITLE="addDistritos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="updateDistritos::#views#distritos#update.xhtml" NAME="output3"
+    PATH="/views/distritos/update.xhtml"
+    TARGET="rules:#views#distritos#update.xhtml" TITLE="updateDistritos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="circuitos::#views#circuitos#circuitos.xhtml"
+    NAME="output4" PATH="/views/circuitos/circuitos.xhtml"
+    TARGET="rules:#views#circuitos#circuitos.xhtml" TITLE="circuitos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addCircuitos::#views#circuitos#add.xhtml"
+    NAME="output5" PATH="/views/circuitos/add.xhtml"
+    TARGET="rules:#views#circuitos#add.xhtml" TITLE="addCircuitos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="updateCircuitos::#views#circuitos#update.xhtml" NAME="output6"
+    PATH="/views/circuitos/update.xhtml"
+    TARGET="rules:#views#circuitos#update.xhtml" TITLE="updateCircuitos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="municipios::#views#municipios#municipios.xhtml" NAME="output7"
+    PATH="/views/municipios/municipios.xhtml"
+    TARGET="rules:#views#municipios#municipios.xhtml" TITLE="municipios" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addMunicipio::#views#municipios#add.xhtml"
+    NAME="output8" PATH="/views/municipios/add.xhtml"
+    TARGET="rules:#views#municipios#add.xhtml" TITLE="addMunicipio" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="updateMunicipio::#views#municipios#update.xhtml" NAME="output9"
+    PATH="/views/municipios/update.xhtml"
+    TARGET="rules:#views#municipios#update.xhtml"
+    TITLE="updateMunicipio" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="entidades::#views#entidades#entidades.xhtml"
+    NAME="output10" PATH="/views/entidades/entidades.xhtml"
+    TARGET="rules:#views#entidades#entidades.xhtml" TITLE="entidades" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addEntidad::#views#entidades#add.xhtml"
+    NAME="output11" PATH="/views/entidades/add.xhtml"
+    TARGET="rules:#views#entidades#add.xhtml" TITLE="addEntidad" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="updateEntidad::#views#entidades#update.xhtml" NAME="output12"
+    PATH="/views/entidades/update.xhtml"
+    TARGET="rules:#views#entidades#update.xhtml" TITLE="updateEntidad" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="especialidades::#views#especialidades#especialidades.xhtml"
+    NAME="output13" PATH="/views/especialidades/especialidades.xhtml"
+    TARGET="rules:#views#especialidades#especialidades.xhtml"
+    TITLE="especialidades" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="addEspecialidad::#views#especialidades#add.xhtml"
+    NAME="output14" PATH="/views/especialidades/add.xhtml"
+    TARGET="rules:#views#especialidades#add.xhtml"
+    TITLE="addEspecialidad" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="updateEspecialidad::#views#especialidades#update.xhtml"
+    NAME="output15" PATH="/views/especialidades/update.xhtml"
+    TARGET="rules:#views#especialidades#update.xhtml"
+    TITLE="updateEspecialidad" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="funcionarios::#views#funcionarios#funcionarios.xhtml"
+    NAME="output16" PATH="/views/funcionarios/funcionarios.xhtml"
+    TARGET="rules:#views#funcionarios#funcionarios.xhtml"
+    TITLE="funcionarios" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="addFuncionario::#views#funcionarios#add.xhtml" NAME="output17"
+    PATH="/views/funcionarios/add.xhtml"
+    TARGET="rules:#views#funcionarios#add.xhtml" TITLE="addFuncionario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="updateFuncionario::#views#funcionarios#update.xhtml"
+    NAME="output18" PATH="/views/funcionarios/update.xhtml"
+    TARGET="rules:#views#funcionarios#update.xhtml"
+    TITLE="updateFuncionario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="consejos::#views#consejos#consejos.xhtml"
+    NAME="output19" PATH="/views/consejos/consejos.xhtml"
+    TARGET="rules:#views#consejos#consejos.xhtml" TITLE="consejos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addConsejo::#views#consejos#add.xhtml"
+    NAME="output20" PATH="/views/consejos/add.xhtml"
+    TARGET="rules:#views#consejos#add.xhtml" TITLE="addConsejo" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="updateConsejo::#views#consejos#update.xhtml"
+    NAME="output21" PATH="/views/consejos/update.xhtml"
+    TARGET="rules:#views#consejos#update.xhtml" TITLE="updateConsejo" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="despachos::#views#despachos#despachos.xhtml"
+    NAME="output22" PATH="/views/despachos/despachos.xhtml"
+    TARGET="rules:#views#despachos#despachos.xhtml" TITLE="despachos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addDespacho::#views#despachos#add.xhtml"
+    NAME="output23" PATH="/views/despachos/add.xhtml"
+    TARGET="rules:#views#despachos#add.xhtml" TITLE="addDespacho" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="updateDespacho::#views#despachos#update.xhtml" NAME="output24"
+    PATH="/views/despachos/update.xhtml"
+    TARGET="rules:#views#despachos#update.xhtml" TITLE="updateDespacho" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="relUsuario::#views#usuario#listado.xhtml"
+    NAME="output25" PATH="/views/usuario/listado.xhtml"
+    TARGET="rules:#views#usuario#listado.xhtml" TITLE="relUsuario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addRelUsuario::#views#usuario#add.xhtml"
+    NAME="output26" PATH="/views/usuario/add.xhtml"
+    TARGET="rules:#views#usuario#add.xhtml" TITLE="addRelUsuario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="updateRelUsuario::#views#usuario#update.xhtml" NAME="output27"
+    PATH="/views/usuario/update.xhtml"
+    TARGET="rules:#views#usuario#update.xhtml" TITLE="updateRelUsuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#views#distritos#add.xhtml"
+  PATH="/views/distritos/add.xhtml" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#distritos#distritos.xhtml"
+  PATH="/views/distritos/distritos.xhtml" SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#index.xhtml" PATH="/views/index.xhtml"
+  SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#distritos#update.xhtml"
+  PATH="/views/distritos/update.xhtml" SHAPE="288,465,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#circuitos#circuitos.xhtml"
+  PATH="/views/circuitos/circuitos.xhtml" SHAPE="304,497,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#circuitos#add.xhtml"
+  PATH="/views/circuitos/add.xhtml" SHAPE="304,529,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#circuitos#update.xhtml"
+  PATH="/views/circuitos/update.xhtml" SHAPE="304,561,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#municipios#update.xhtml"
+  PATH="/views/municipios/update.xhtml" SHAPE="304,1105,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#municipios#municipios.xhtml"
+  PATH="/views/municipios/municipios.xhtml" SHAPE="304,657,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#municipios#add.xhtml"
+  PATH="/views/municipios/add.xhtml" SHAPE="304,993,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#entidades#update.xhtml"
+  PATH="/views/entidades/update.xhtml" SHAPE="304,1201,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#entidades#entidades.xhtml"
+  PATH="/views/entidades/entidades.xhtml" SHAPE="304,753,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#entidades#add.xhtml"
+  PATH="/views/entidades/add.xhtml" SHAPE="304,1089,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#especialidades#especialidades.xhtml"
+  PATH="/views/especialidades/especialidades.xhtml" SHAPE="304,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#especialidades#add.xhtml"
+  PATH="/views/especialidades/add.xhtml" SHAPE="304,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#especialidades#update.xhtml"
+  PATH="/views/especialidades/update.xhtml" SHAPE="304,849,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#funcionarios#funcionarios.xhtml"
+  PATH="/views/funcionarios/funcionarios.xhtml" SHAPE="304,945,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#funcionarios#add.xhtml"
+  PATH="/views/funcionarios/add.xhtml" SHAPE="304,1841,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#funcionarios#update.xhtml"
+  PATH="/views/funcionarios/update.xhtml" SHAPE="304,1953,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#consejos#update.xhtml"
+  PATH="/views/consejos/update.xhtml" SHAPE="304,2049,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#consejos#add.xhtml"
+  PATH="/views/consejos/add.xhtml" SHAPE="304,1937,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#consejos#consejos.xhtml"
+  PATH="/views/consejos/consejos.xhtml" SHAPE="304,1041,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#despachos#update.xhtml"
+  PATH="/views/despachos/update.xhtml" SHAPE="304,2145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#despachos#despachos.xhtml"
+  PATH="/views/despachos/despachos.xhtml" SHAPE="304,1137,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#despachos#add.xhtml"
+  PATH="/views/despachos/add.xhtml" SHAPE="304,2033,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#views#publico#consulta_avanzada#avanzada.xhtml"
+  PATH="/views/publico/consulta_avanzada/avanzada.xhtml"
+  SHAPE="304,1201,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#publico#consulta_basica#basica.xhtml"
+  PATH="/views/publico/consulta_basica/basica.xhtml"
+  SHAPE="304,1201,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#publico#*" PATH="/views/publico/*"
+  SHAPE="32,3025,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#views#publico#*:0" NAME="item"
+   PATH="/views/publico/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="avanzada::#views#publico#consulta_avanzada#avanzada.xhtml"
+    NAME="output" PATH="/views/publico/consulta_avanzada/avanzada.xhtml"
+    TARGET="rules:#views#publico#consulta_avanzada#avanzada.xhtml"
+    TITLE="avanzada" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="basica::#views#publico#consulta_basica#basica.xhtml"
+    NAME="output1" PATH="/views/publico/consulta_basica/basica.xhtml"
+    TARGET="rules:#views#publico#consulta_basica#basica.xhtml"
+    TITLE="basica" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#views#usuario#listado.xhtml"
+  PATH="/views/usuario/listado.xhtml" SHAPE="304,1233,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#usuario#update.xhtml"
+  PATH="/views/usuario/update.xhtml" SHAPE="304,2241,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#usuario#add.xhtml"
+  PATH="/views/usuario/add.xhtml" SHAPE="304,1233,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>
